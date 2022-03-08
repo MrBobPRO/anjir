@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Belinda Ophthalmology</title>
+        <title>Anjir - Вход</title>
 
         <meta name="robots" content="none"/>
         <meta name="googlebot" content="noindex, nofollow" />
@@ -39,6 +39,7 @@
             }
             .logo {
                 margin-bottom: 16px;
+                width: 160px;
             }
             .form-group {
                 display: flex;

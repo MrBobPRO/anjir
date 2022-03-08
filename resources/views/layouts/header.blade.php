@@ -1,43 +1,36 @@
 <header class="header">
-    <div class="main-container header__inner">
-        {{-- Logo start --}}
-        <a class="header__logo" href="{{ route('home') }}">
-            <img src="{{ asset('img/main/logo.svg') }}" alt="Belinda Ophthalmology logo">
-        </a>  {{-- Logo end --}}
+    {{-- Header Top start --}}
+    <div class="main-container header__top">
+        <a class="logo header__logo" href="{{ route('home') }}">
+            <img src="{{ asset('img/main/logo.svg') }}" alt="Anjir logo">
+        </a>
 
-        <nav class="header__nav">
-            <ul>
-                <li>
-                    <a @if($route == 'home') class="active" @endif href="{{ route('home') }}">Главная</a>
-                </li>
+        <form action="#" class="search gradient-bg">
+            <input type="text" class="search__input" name="keyword" placeholder="поиск товара">
+            <span class="material-icons-outlined search__icon">search</span>
+        </form>
 
-                <li>
-                    <a @if($route == 'researches.index') class="active" @endif href="{{ route('home') }}">Исследования</a>
-                </li>
+        <div class="header__actions">
+            <button class="order-call gradient-bg">
+                <span class="material-icons-outlined">phone_in_talk</span>
+            </button>
 
-                <li>
-                    <a @if($route == 'products.index') class="active" @endif href="{{ route('home') }}">Продукты</a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="header__contacts">
-            <a href="https://salomat.tj" target="_blank">
-                <div>
-                    <h3>Покупайте нашу</h3>
-                    <p>продукцию с выгодой</p>
-                </div>
-                <span class="material-icons-outlined">shopping_cart</span>
-            </a>
-
-            <a href="tel:+992918000000">
-                <div>
-                    <h3>+ 992 918 00 00 00</h3>
-                    <p>Свяжитесь с нами</p>
-                </div>
-                <span class="material-icons-outlined">map</span>
+            <a href="#" class="header__basket gradient-bg">
+                <span class="material-icons-outlined header__basket-icon">local_mall</span>
+                <span class="header__basket-discont">+0</span>
             </a>
         </div>
+    </div> {{-- Header Top end --}}
 
-    </div>  {{-- Header Inner end --}}
+    {{-- Header Nav start --}}
+    <nav class="header__nav gradient-bg">
+        <ul class="main-container">
+            <li><a href="{{ route('home') }}">О нас</a></li>
+            <li><a href="{{ route('home') }}">Женское</a></li>
+            <li><a href="{{ route('home') }}">Мужское</a></li>
+            <li><a href="{{ route('home') }}">Аксессуары</a></li>
+            <li><a href="{{ route('home') }}">Сумки</a></li>
+            <li><a href="{{ route('home') }}">Скидки</a></li>
+        </ul>
+    </nav> {{-- Header Nav end --}}
 </header>
