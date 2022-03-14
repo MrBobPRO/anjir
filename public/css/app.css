@@ -22,7 +22,7 @@ main {
 }
 .main-container {
     display: flex;
-    max-width: 1240px;
+    max-width: 1160px;
     width: 100%;
     margin: 0 auto;
     padding: 0 50px;
@@ -65,7 +65,7 @@ button {
     display: flex;
 }
 .logo img {
-    width: 132px;
+    width: 160px;
 }
 /* ------------ /end Main styles  ------------ */
 
@@ -93,24 +93,12 @@ button {
 }
 .search__input {
     border-radius: 8px;
-    width: 300px;
+    width: 400px;
     border: none;
     padding: 6px 12px;
 }
 .search__input:focus {
     outline: none;
-}
-.search__input::-webkit-input-placeholder {
-    text-align: center;
-}
-.search__input:-moz-placeholder { /* Firefox 18- */
-    text-align: center;  
-}
-.search__input::-moz-placeholder {  /* Firefox 19+ */
-    text-align: center;  
-}
-.search__input:-ms-input-placeholder {  
-    text-align: center; 
 }
 .search__icon {
     color: white;
@@ -158,11 +146,18 @@ button {
     text-transform: lowercase;
     color: white;
     font-size: 18px;
+    display: flex;
+    align-items: center;
 }
 .header__nav a::after {
-    content: '•';
-    padding-top: 2px;
-    padding-left: 10px;
+    display: flex;
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-left: 8px;
+    margin-top: 2px;
+    background-color: white;
 }
 /* ------------ /end Header  ------------ */
 
@@ -174,7 +169,7 @@ button {
 .footer__top {
     padding-top: 40px;
     padding-bottom: 40px;
-    gap: 140px;
+    gap: 100px;
 }
 .footer__block {
     display: flex;
@@ -254,6 +249,7 @@ button {
     border: 1px solid #9c9c9c;
     display: block;
     -webkit-backface-visibility: visible;
+    backface-visibility: visible;
     transition: opacity .2s ease;
     border-radius: 30px;
 }
@@ -264,3 +260,143 @@ button {
     border-radius: 20px;
 }
 /* ------------ /end Carousels  ------------ */
+
+
+/* ------------ Advantages  ------------ */
+.advantages__inner {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.advantages__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 20px;
+}
+.advantages__list li {
+    border-radius: 12px;
+    display: flex;
+    padding: 20px 32px;
+    align-items: center;
+    justify-content: space-between;
+}
+.advantages__list h3 {
+    margin: 0;
+    width: 60%;
+    color: white;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+.advantages__list img {
+    width: 32%;
+}
+/* ------------ /end Advantages  ------------ */
+
+
+/* ------------ Novelty  ------------ */
+.novelty__title {
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.novelty__inner {
+
+}
+.novelty-carousel-container {
+    max-width: 100%;
+}
+.novelty-item {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+.novelty-image-container {
+    position: relative;
+}
+.novelty-image-container img {
+    border-radius: 12px;
+    border: 1px solid #cecece;
+}
+.novelty-image-container span {
+    position: absolute;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -12px;
+    left: 12px;
+}
+.novelty-item h2 {
+    text-align: center;
+    margin: 20px 0 4px;
+    font-size: 16px;
+}
+.novelty-item p {
+    text-align: center;
+    margin: 0;
+}
+/* ------------ /end Novelty  ------------ */
+
+
+/* ------------ Stock  ------------ */
+.home-stock {
+
+}
+.home-stock__inner {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding-top: 40px;
+}
+.home-stock__item {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-stock__item img {
+    border-radius: 12px;
+    border: 1px solid #cecece;
+}
+.home-stock__item a {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.home-stock__sign {
+    font-size: 60px;
+    font-weight: bold;
+}
+.home-stock__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-stock__action h2 {
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+}
+.home-stock__action a {
+    color: white;
+    padding: 8px 40px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+/* ------------ /end Stock  ------------ */
+
+
