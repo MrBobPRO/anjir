@@ -24,7 +24,21 @@ class ProductSeeder extends Seeder
             $product->image = $image[$i];
             $product->description = $description;
             $product->price = rand(60, 220);
+            $product->size_type_id = rand(1,2);
             $product->save();
+
+            $product->categories()->attach(rand(1,2));
+            $product->categories()->attach(rand(3,4));
+
+            if($product->size_type_id == 1) {
+                for($j=1; $j<7; $j++) {
+                    $product->sizes()->attach($j);
+                }
+            } else {
+                for($j=7; $j<13; $j++) {
+                    $product->sizes()->attach($j);
+                }
+            }
         }
     }
 }

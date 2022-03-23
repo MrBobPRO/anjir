@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'home'])->name('home');
 Route::post('/search', [MainController::class, 'search'])->name('search');
 
-
+Route::get('/categorii/{url}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

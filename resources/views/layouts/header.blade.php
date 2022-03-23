@@ -17,7 +17,7 @@
 
             <a href="#" class="header__basket gradient-bg">
                 <span class="material-icons-outlined header__basket-icon">local_mall</span>
-                <span class="header__basket-discont">+0</span>
+                <span class="header__basket-discont">0</span>
             </a>
         </div>
     </div> {{-- Header Top end --}}
@@ -26,10 +26,9 @@
     <nav class="header__nav gradient-bg">
         <ul class="main-container">
             <li><a href="{{ route('home') }}">О нас</a></li>
-            <li><a href="{{ route('home') }}">Женское</a></li>
-            <li><a href="{{ route('home') }}">Мужское</a></li>
-            <li><a href="{{ route('home') }}">Аксессуары</a></li>
-            <li><a href="{{ route('home') }}">Сумки</a></li>
+            @foreach ($categories as $category)
+                <li><a href="{{ route('categories.show', $category->url) }}">{{ $category->name }}</a></li>
+            @endforeach
             <li><a href="{{ route('home') }}">Скидки</a></li>
         </ul>
     </nav> {{-- Header Nav end --}}
