@@ -554,7 +554,7 @@ button {
     margin-bottom: 0;
 }
 .about-us-text__bg {
-    padding: 60px 100px 200px;
+    padding: 60px 100px 0;
     border-radius: 12px;
     position: relative;
 }
@@ -570,6 +570,7 @@ button {
     line-height: 1.8;
     z-index: 1;
     position: relative;
+    padding-bottom: 200px;
 }
 .about-us-text img {
     position: absolute;
@@ -578,6 +579,11 @@ button {
     width: 300px;
     opacity: 0.3;
     z-index: 0;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 /* ------------ /end About us  ------------ */
 
