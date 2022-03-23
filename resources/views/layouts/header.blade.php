@@ -25,11 +25,11 @@
     {{-- Header Nav start --}}
     <nav class="header__nav gradient-bg">
         <ul class="main-container">
-            <li><a href="{{ route('home') }}">О нас</a></li>
+            <li><a href="{{ route('about-us') }}">О нас</a></li>
             @foreach ($categories as $category)
                 <li><a href="{{ route('categories.show', $category->url) }}">{{ $category->name }}</a></li>
             @endforeach
-            <li><a href="{{ route('home') }}">Скидки</a></li>
+            <li><a href="{{ route('discounts.show', 'zhenskoe') }}">Скидки</a></li>
         </ul>
     </nav> {{-- Header Nav end --}}
 </header>

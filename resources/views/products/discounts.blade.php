@@ -2,21 +2,20 @@
 
 @section('main')
 
-<main class="category-page" role="main">
+<main class="discounts-page" role="main">
     <section class="main-title-section">
         <div class="main-container main-title-container">
-            <h1 class="gradient-text main-title">{{ $category->name }}</h1>
+            <h1 class="gradient-text main-title">Скидки</h1>
+            <div class="category-switcher">
+                <a href="{{ route('discounts.show', 'zhenskoe') }}" class="gradient-text @if($categoryUrl == 'zhenskoe') active @endif">жен</a>
+                <div class="gradient-bg"></div>
+                <a href="{{ route('discounts.show', 'muzhskoe') }}" class="gradient-text @if($categoryUrl == 'muzhskoe') active @endif"">муж</a>
+            </div>
             <span></span>
         </div>
     </section>
 
     <x-main-carousel />
-
-    <section class="novelty categories-novelty">
-        <div class="main-container novelty__inner">
-            <x-novelty-carousel :products="$novelty" />
-        </div>
-    </section>
 
     <section class="products-list-section">
         <div class="main-container products-list-section__inner">

@@ -86,7 +86,7 @@ button {
 }
 .main-title-container span {
     background: -webkit-linear-gradient(0deg, #C387D1, black);
-    width: 100%;
+    flex-grow: 1;
     height: 14px;
     margin-top: 8px;
     border-radius: 20px 0 0 20px;
@@ -443,6 +443,20 @@ button {
     border: 1px solid #cecece;
     border-radius: 12px
 }
+.product-card__discount {
+    position: absolute;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -12px;
+    left: 12px;
+}
 .product-card__appearance div {
     width: 80%;
     display: flex;
@@ -504,5 +518,67 @@ button {
     font-size: 22px;
 }
 /* ------------ /end Products list  ------------ */
+
+
+/* ------------ Caregory switcher  ------------ */
+.category-switcher {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-top: 8px;
+}
+.category-switcher a {
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+}
+.category-switcher a.active::after {
+    content: '';
+    background: -webkit-linear-gradient(0deg, #C387D1, black);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 4px;
+}
+.category-switcher div {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+/* ------------ /end Category switcher  ------------ */
+
+
+/* ------------ About us  ------------ */
+.about-us-page .main-title-container {
+    margin-bottom: 0;
+}
+.about-us-text__bg {
+    padding: 60px 100px 200px;
+    border-radius: 12px;
+    position: relative;
+}
+.about-us-text h1 {
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+.about-us-text p {
+    color: white;
+    margin: 0;
+    line-height: 1.8;
+    z-index: 1;
+    position: relative;
+}
+.about-us-text img {
+    position: absolute;
+    right: 80px;
+    bottom: 40px;
+    width: 300px;
+    opacity: 0.3;
+    z-index: 0;
+}
+/* ------------ /end About us  ------------ */
 
 
