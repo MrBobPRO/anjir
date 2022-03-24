@@ -11,7 +11,7 @@
         </form>
 
         <div class="header__actions">
-            <button class="order-call gradient-bg">
+            <button class="order-call gradient-bg" data-action="show-modal" data-target-id="feedback-modal">
                 <span class="material-icons-outlined">phone_in_talk</span>
             </button>
 

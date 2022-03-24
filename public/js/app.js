@@ -1,3 +1,4 @@
+//owl carousels
 let mainCarousel = $("#main-carousel");
 if (mainCarousel[0]) {
     mainCarousel.owlCarousel({
@@ -16,3 +17,18 @@ if (noveltyCarousel[0]) {
         items: 4
     });
 }
+
+
+//modals
+document.querySelectorAll('[data-action="show-modal"]').forEach(item => {
+    item.addEventListener('click', event => {
+        document.getElementById(item.dataset.targetId).classList.add('show');
+    })
+})
+
+//hide modals
+document.querySelectorAll('[data-action="hide-modal"]').forEach(item => {
+    item.addEventListener('click', event => {
+        document.getElementById(item.dataset.targetId).classList.remove('show');
+    })
+})
