@@ -23,7 +23,7 @@ class MainController extends Controller
     public function discounts($categoryUrl)
     {
         $category = Category::where('url', $categoryUrl)->first();
-        $products = $category->products()->where('discount', '!=', 0)->paginate(12);
+        $products = $category->products()->where('discount', '!=', 0)->paginate(16);
 
         return view('products.discounts', compact('category', 'products', 'categoryUrl'));
     }

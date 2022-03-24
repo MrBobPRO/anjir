@@ -3,7 +3,7 @@
 <div class="novelty-carousel-container">
     <div class="owl-carousel novelty-carousel" id="novelty-carousel">
         @foreach ($products as $product)
-            <a href="#" class="novelty-item">
+            <a href="{{ route('products.show', $product->id) }}" class="novelty-item">
                 <div class="novelty-image-container">
                     <img src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
                     <span>new</span>

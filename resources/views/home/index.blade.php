@@ -41,14 +41,18 @@
     <section class="home-stock">
         <div class="main-container home-stock__inner">
             <div class="home-stock__item">
-                <img src="{{ asset('img/products/1.jpg') }}">
+                <a href="#">
+                    <img src="{{ asset('img/products/1.jpg') }}">
+                </a>
                 <a href="#" class="gradient-bg">Выбрать товар</a>
             </div>
 
             <span class="home-stock__sign">+</span>
 
             <div class="home-stock__item">
-                <img src="{{ asset('img/products/2.jpg') }}">
+                <a href="#">
+                    <img src="{{ asset('img/products/2.jpg') }}">
+                </a>
                 <a href="#" class="gradient-bg">Выбрать товар</a>
             </div>
 

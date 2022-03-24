@@ -1,7 +1,7 @@
 @props(['product'])
 
 <div class="product-card">
-    <div class="product-card__appearance">
+    <a href="{{ route('products.show', $product->id) }}" class="product-card__appearance">
         @if ($product->discount)
             <span class="product-card__discount">-{{ $product->discount }}%</span>
         @endif
@@ -10,7 +10,7 @@
             <h2>{{ $product->title }}</h2>
             <p>{{ $product->price }} сом</p>
         </div>
-    </div>
+    </a>
 
     <form class="product-card__form" action="#">
         @foreach ($product->sizes as $size)
@@ -26,11 +26,11 @@
 
     <div class="product-card__actions">
         <button class="gradient-bg buy-on-click">Купить в один
-            <span class="material-icons">ads_click</span>
+            <img src="{{ asset('img/main/tap.png') }}" alt="tap">
         </button>
 
         <button class="gradient-bg add-into-basket">В корзину
-            <span class="material-icons">add_shopping_cart</span>
+            <img src="{{ asset('img/main/add-to-basket.png') }}" alt="add to basket">
         </button>
     </div>
 </div>

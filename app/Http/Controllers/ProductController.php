@@ -44,9 +44,39 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::find($id);
+
+        //generate title
+        $male = false;
+        $female = false;
+        foreach($product->categories as $category) {
+            if($category->url == 'muzhskoe') {
+                $male = true;
+            }
+            if($category->url == 'zhenskoe') {
+                $female = true;
+            }
+        }
+
+        if(!$male && !$female) {
+            $title = null;
+        } elseif($male && $female) {
+            $title = 'Мужское / Женское';
+        } else {
+            $title = $male ? 'Мужское' : 'Женское';
+        }
+
+        //similar products
+        $productCategories = $product->categories()->pluck('id')->toArray();
+        $similarProducts = Product::whereHas('categories', function ($q) use ($productCategories) {
+            $q->whereIn('id', $productCategories);
+        })
+            ->where('id', '!=', $product->id)
+            ->paginate(16);
+
+        return view('products.show', compact('product', 'title', 'similarProducts'));
     }
 
     /**
