@@ -444,7 +444,9 @@ button {
 .product-card__appearance {
     position: relative;
     border: 1px solid #cecece;
-    border-radius: 12px
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
 }
 .product-card__discount {
     position: absolute;
@@ -479,21 +481,21 @@ button {
     margin: 0;
     font-weight: 500;
 }
-.product-card__form {
+.product-card__form, .modal-sizes {
     display: flex;
     justify-content: space-around;
     padding: 20px 8px;
     margin-top: auto;
     align-items: center;
 }
-.product-card__form input {
+.product-card__form input, .modal-sizes input {
     display: none;
 }
-.product-card__form label {
+.product-card__form label, .modal-sizes label {
     cursor: pointer;
     position: relative;
 }
-.product-card__form input:checked + label::after {
+.product-card__form input:checked + label::after, .modal-sizes input:checked + label::after {
     content: '';
     background: -webkit-linear-gradient(0deg, #C387D1, black);
     position: absolute;
@@ -765,7 +767,70 @@ button {
     font-weight: bold;
     margin-top: 8px;
 }
+.buy-on-click-modal .modal-dialog {
+    padding: 30px 40px 40px;
+    min-width: 420px;
+}
+.buy-on-click-modal .modal-image {
+    width: 120px;
+    border-radius: 20px;
+}
+.buy-on-click-modal .modal-form {
+    margin-top: 12px;
+}
+.modal-sizes {
+    padding: 0 0 16px;
+    color: white;
+    justify-content: center;
+    gap: 6px;
+}
+.modal-sizes label {
+    color: white;
+}
+.modal-sizes input:checked + label::after {
+    background: white;
+}
 /* ------------ /end Modal  ------------ */
+
+
+/* ------------ Feedback  ------------ */
+.feedback-success h1 {
+    color: black;
+    padding: 24px;
+    background: #E6E6E6;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* ------------ /end Feedback  ------------ */
+
+
+/* ------------ Counter  ------------ */
+.counter {
+    display: flex;
+    margin: 0 auto 20px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.counter button {
+    margin: 0;
+    border-radius: 0;
+    padding: 4px 10px;
+    background: white;
+    font-weight: bold;
+}
+.counter input {
+    margin: 0;
+    font-weight: bold;
+    width: 28px;
+    padding: 0;
+    border-radius: 0;
+    font-size: 14px;
+}
+/* ------------ /end Counter  ------------ */
 
 
 

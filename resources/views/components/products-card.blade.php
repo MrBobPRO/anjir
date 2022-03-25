@@ -5,7 +5,7 @@
         @if ($product->discount)
             <span class="product-card__discount">-{{ $product->discount }}%</span>
         @endif
-        <img src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
+        <img class="product-card__image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
         <div class="gradient-bg">
             <h2>{{ $product->title }}</h2>
             <p>{{ $product->price }} сом</p>
@@ -18,8 +18,8 @@
                 <span>–</span>
             @endif
             <div>
-                <input type="radio" name="size" value="{{ $size->title }}" id="{{$size->title . $product->id }}" @if($loop->first) checked @endif>
-                <label for="{{$size->title . $product->id }}">{{ $size->title }}</label>
+                <input type="radio" name="size" value="{{ $size->title }}" id="{{$size->title . 'product' . $product->id }}" @if($loop->first) checked @endif>
+                <label for="{{$size->title . 'product' . $product->id }}">{{ $size->title }}</label>
             </div>
         @endforeach
     </form>

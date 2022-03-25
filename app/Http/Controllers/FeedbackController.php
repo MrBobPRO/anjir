@@ -35,7 +35,30 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $feedback = new Feedback();
+        $feedback->name = $request->name;
+        $feedback->phone = $request->phone;
+        $feedback->save();
+
+        session(['feedback' => 'requested']);
+
+        return redirect()->route('feedback.success');
+    }
+
+    /**
+     * Return success message after storing feedback
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function success()
+    {
+        if(session('feedback') == 'requested') {
+            session()->forget('feedback');
+            return view('feedback.success');
+        } else {
+            return redirect()->home();
+        }
     }
 
     /**

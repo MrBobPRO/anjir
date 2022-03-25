@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/o-nas', [MainController::class, 'aboutUs'])->name('about-us');
 Route::post('/search', [MainController::class, 'search'])->name('search');
+
+Route::get('/zakazat-zvonok', [FeedbackController::class, 'success'])->name('feedback.success');
+Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
 
 Route::get('/categorii/{url}', [CategoryController::class, 'show'])->name('categories.show');
 Route::get('/skidki/{categoryUrl}', [MainController::class, 'discounts'])->name('discounts.show');
