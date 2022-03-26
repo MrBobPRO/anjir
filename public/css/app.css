@@ -793,8 +793,8 @@ button {
 /* ------------ /end Modal  ------------ */
 
 
-/* ------------ Feedback  ------------ */
-.feedback-success h1 {
+/* ------------ On success  ------------ */
+.success-message h1 {
     color: black;
     padding: 24px;
     background: #E6E6E6;
@@ -805,7 +805,7 @@ button {
     align-items: center;
     gap: 8px;
 }
-/* ------------ /end Feedback  ------------ */
+/* ------------ /end Success  ------------ */
 
 
 /* ------------ Counter  ------------ */

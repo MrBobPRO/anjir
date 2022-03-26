@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feed
 Route::get('/categorii/{url}', [CategoryController::class, 'show'])->name('categories.show');
 Route::get('/skidki/{categoryUrl}', [MainController::class, 'discounts'])->name('discounts.show');
 Route::get('/tovar/{id}', [ProductController::class, 'show'])->name('products.show');
+
+Route::post('/buy-on-click', [OrderController::class, 'buyOnClick'])->name('orders.buy-on-click');
+Route::get('/korzina/{id}', [OrderController::class, 'success'])->name('orders.success');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

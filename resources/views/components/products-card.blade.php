@@ -12,6 +12,8 @@
         </div>
     </a>
 
+    <input type="hidden" value="{{ $product->id }}" class="product-card__id">
+
     <form class="product-card__form" action="#">
         @foreach ($product->sizes as $size)
             @if(!$loop->first)
@@ -29,8 +31,8 @@
             <img src="{{ asset('img/main/tap.png') }}" alt="tap">
         </button>
 
-        <button class="gradient-bg add-into-basket">В корзину
-            <img src="{{ asset('img/main/add-to-basket.png') }}" alt="add to basket">
+        <button class="gradient-bg add-into-basket" data-action="add-into-basket" data-size-input="">В корзину
+            <img src="{{ asset('img/main/add-to-basket.png') }}" alt="add into basket">
         </button>
     </div>
 </div>

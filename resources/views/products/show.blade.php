@@ -69,8 +69,10 @@
                 <h2 class="modal-title">Купить в один клик</h2>
                 <img class="modal-image" id="buy-on-click-product-show-modal-image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
     
-                <form action="{{ route('feedback.store') }}" method="POST" class="modal-form" id="buy-on-click-product-show-form">
+                <form action="{{ route('orders.buy-on-click') }}" method="POST" class="modal-form" id="buy-on-click-product-show-form">
                     @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+
                     <div class="modal-sizes" id="product-show-modal-sizes">
                         @foreach ($product->sizes as $size)
                             @if(!$loop->first)

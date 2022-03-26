@@ -37,9 +37,13 @@ document.querySelectorAll('[data-action="hide-modal"]').forEach(item => {
 //buy on click
 document.querySelectorAll('.buy-on-click').forEach(item => {
     item.addEventListener('click', event => {
-        //copy sizes from card to modal and change ids of input & targets of labels. Also change image product
+        //copy all needed values for request & appearance
         let card = item.closest('.product-card');
         let cardForm = card.getElementsByClassName('product-card__form')[0];
+
+        let productId = document.getElementById('buy-on-click-modal-product-id');
+        let cardProductId = card.getElementsByClassName('product-card__id')[0];
+        productId.value = cardProductId.value;
 
         let sizesContainer = document.getElementById('modal-sizes');
         sizesContainer.innerHTML = cardForm.innerHTML;

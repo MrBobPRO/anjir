@@ -6,8 +6,10 @@
             <h2 class="modal-title">Купить в один клик</h2>
             <img class="modal-image" id="buy-on-click-modal-image" src="{{ asset('img/main/feedback.png') }}">
 
-            <form action="{{ route('feedback.store') }}" method="POST" class="modal-form" id="buy-on-click-form">
+            <form action="{{ route('orders.buy-on-click') }}" method="POST" class="modal-form" id="buy-on-click-form">
                 @csrf
+                <input type="hidden" value="0" name="product_id" id="buy-on-click-modal-product-id">
+
                 <div class="modal-sizes" id="modal-sizes"></div>
 
                 <div class="counter">

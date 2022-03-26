@@ -10,6 +10,37 @@ class MainController extends Controller
 {
     public function home()
     {
+        //storing item into basket
+        // session([
+        //     'basket' => [[
+        //         'product_id' => 1,
+        //         'order_id' => 2,
+        //         'size' => 1,
+        //         'amount' => 2
+        //     ]]
+        // ]);
+
+        //pushing item into basket
+        // session()->push('basket',
+        //     [
+        //         'product_id' => 2,
+        //         'order_id' => 9,
+        //         'size' => 'XL',
+        //         'amount' => 66
+        //     ]);
+
+        //removing item from basket
+        // $prods = session('basket');
+        // for($i=0; $i<count($prods); $i++) {
+        //     if($prods[$i]['order_id'] == 9) {
+        //         unset($prods[$i]);
+        //     }
+        // }
+
+        // session()->forget('basket');
+        // session()->put('basket', $prods);
+
+        // dd(session('basket'));
         $novelty = Product::latest()->take(10)->get();
 
         return view('home.index', compact('novelty'));
