@@ -47,7 +47,7 @@ class OrderController extends Controller
     {
         if(session('order') == 'requested') {
             session()->forget('order');
-            return view('orders.success');
+            return view('layouts.success-page');
         } else {
             return redirect()->home();
         }

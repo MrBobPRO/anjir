@@ -55,7 +55,7 @@ class FeedbackController extends Controller
     {
         if(session('feedback') == 'requested') {
             session()->forget('feedback');
-            return view('feedback.success');
+            return view('layouts.success-page');
         } else {
             return redirect()->home();
         }

@@ -16,6 +16,17 @@ if (noveltyCarousel[0]) {
         autoWidth: true,
         items: 4
     });
+
+    // Owl carousel navigations
+    let owlNavPrev = document.getElementById("novelty-carousel-prev-nav");
+    owlNavPrev.addEventListener("click", function () {
+        noveltyCarousel.trigger('prev.owl.carousel');
+    });
+
+    let owlNavNext = document.getElementById("novelty-carousel-next-nav");
+    owlNavNext.addEventListener("click", function () {
+        noveltyCarousel.trigger('next.owl.carousel');
+    });
 }
 
 
@@ -35,36 +46,32 @@ document.querySelectorAll('[data-action="hide-modal"]').forEach(item => {
 
 
 //buy on click
-document.querySelectorAll('.buy-on-click').forEach(item => {
+document.querySelectorAll('[data-action="buy-on-click"]').forEach(item => {
     item.addEventListener('click', event => {
-        //copy all needed values for request & appearance
+        //copy card sizes and image to modal
         let card = item.closest('.product-card');
-        let cardForm = card.getElementsByClassName('product-card__form')[0];
 
-        let productId = document.getElementById('buy-on-click-modal-product-id');
-        let cardProductId = card.getElementsByClassName('product-card__id')[0];
-        productId.value = cardProductId.value;
+        let cardSizes = card.getElementsByClassName('product-card__sizes')[0];
+        let modalSizes = document.getElementById('buy-on-click-sizes');
+        modalSizes.innerHTML = cardSizes.innerHTML;
 
-        let sizesContainer = document.getElementById('modal-sizes');
-        sizesContainer.innerHTML = cardForm.innerHTML;
+        let modalImage = document.getElementById('buy-on-click-modal-image');
+        let cardImage = card.getElementsByClassName('product-card__image')[0];
+        modalImage.src = cardImage.src;
 
-        let inputs = sizesContainer.getElementsByTagName('input');
+        //change radio ids & label ids of modal to escape conflicts with card
+        let inputs = modalSizes.getElementsByClassName('product-card__radio');
         for (let input of inputs) {
             input.id = input.id + 'modal';
         }
 
-        let labels = sizesContainer.getElementsByTagName('label');
+        let labels = modalSizes.getElementsByTagName('label');
         for (let label of labels) {
             label.setAttribute('for', label.htmlFor + 'modal');
         }
 
-        let modalImage = document.getElementById('buy-on-click-modal-image');
-        let productImage = card.getElementsByClassName('product-card__image')[0];
-        modalImage.src = productImage.src;
-
-        //also set product amount to 1
-        document.getElementById('buy-on-click-modal-amount-input').value = 1;
-
+        //set product amount to 1
+        document.getElementById('buy-on-click-modal-amount').value = 1;
         //show modal
         document.getElementById('buy-on-click-modal').classList.add('show');
     });

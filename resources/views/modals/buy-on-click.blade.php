@@ -1,20 +1,19 @@
 <div class="main-modal buy-on-click-modal" id="buy-on-click-modal" tabindex="-1" aria-hidden="true">
     <div class="modal-background" data-action="hide-modal" data-target-id="buy-on-click-modal"></div>
-    <div class="modal-dialog gradient-bg">
+    <div class="gradient-bg modal-dialog">
         <div class="modal-content">
             <img src="{{ asset('img/main/sliced-anjir.png') }}" class="modal-content__background">
             <h2 class="modal-title">Купить в один клик</h2>
             <img class="modal-image" id="buy-on-click-modal-image" src="{{ asset('img/main/feedback.png') }}">
 
-            <form action="{{ route('orders.buy-on-click') }}" method="POST" class="modal-form" id="buy-on-click-form">
+            <form action="{{ route('orders.buy-on-click') }}" method="POST" class="modal-form buy-on-click-form">
                 @csrf
-                <input type="hidden" value="0" name="product_id" id="buy-on-click-modal-product-id">
 
-                <div class="modal-sizes" id="modal-sizes"></div>
+                <div class="product-card__sizes buy-on-click-sizes" id="buy-on-click-sizes"></div>
 
                 <div class="counter">
                     <button type="button" class="decrement-amount">–</button>
-                    <input type="text" name="amount" value="1" class="only-numbers" id="buy-on-click-modal-amount-input" required>
+                    <input type="text" name="amount" value="1" class="only-numbers" id="buy-on-click-modal-amount" required>
                     <button type="button" class="increment-amount">+</button>
                 </div>
 
