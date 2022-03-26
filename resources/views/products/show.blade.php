@@ -32,7 +32,7 @@
                 </form>
 
                 <div class="product-card__actions">
-                    <button class="gradient-bg buy-on-click">Купить в один
+                    <button class="gradient-bg" data-action="show-modal" data-target-id="buy-on-click-product-show-modal">Купить в один
                         <img src="{{ asset('img/main/tap.png') }}" alt="tap">
                     </button>
             
@@ -54,12 +54,48 @@
             </div>
 
             <div class="products-list">
-                @foreach ($similarProducts as $product)
-                    <x-products-card :product="$product" />
+                @foreach ($similarProducts as $similarProduct)
+                    <x-products-card :product="$similarProduct" />
                 @endforeach
             </div>
         </div>
     </section>
+
+    <div class="main-modal buy-on-click-modal" id="buy-on-click-product-show-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-background" data-action="hide-modal" data-target-id="buy-on-click-product-show-modal"></div>
+        <div class="modal-dialog gradient-bg">
+            <div class="modal-content">
+                <img src="{{ asset('img/main/sliced-anjir.png') }}" class="modal-content__background">
+                <h2 class="modal-title">Купить в один клик</h2>
+                <img class="modal-image" id="buy-on-click-product-show-modal-image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
+    
+                <form action="{{ route('feedback.store') }}" method="POST" class="modal-form" id="buy-on-click-product-show-form">
+                    @csrf
+                    <div class="modal-sizes" id="product-show-modal-sizes">
+                        @foreach ($product->sizes as $size)
+                            @if(!$loop->first)
+                                <span>–</span>
+                            @endif
+                            <div>
+                                <input type="radio" name="size" value="{{ $size->title }}" id="{{$size->title . 'product' . $product->id . 'modal' }}" @if($loop->first) checked @endif>
+                                <label for="{{$size->title . 'product' . $product->id . 'modal' }}">{{ $size->title }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+    
+                    <div class="counter">
+                        <button type="button" class="decrement-amount">–</button>
+                        <input type="text" name="amount" value="1" class="only-numbers" id="buy-on-click-product-show-modal-amount-input" required>
+                        <button type="button" class="increment-amount">+</button>
+                    </div>
+    
+                    <input type="text" name="name" placeholder="Ф.И.О" required>
+                    <input type="text" name="phone" placeholder="номер телефона" required>
+                    <button>заказать</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </main>
 
 @endsection

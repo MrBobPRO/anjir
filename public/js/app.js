@@ -82,7 +82,7 @@ document.querySelectorAll('.decrement-amount').forEach(item => {
         let parent = item.parentElement;
         let input = parent.getElementsByTagName('input')[0];
         let value = parseInt(input.value);
-        if (value > 1) {
+        if (value > 0) {
             input.value = value - 1;
         }
     });

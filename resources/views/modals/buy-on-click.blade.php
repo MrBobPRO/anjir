@@ -4,7 +4,7 @@
         <div class="modal-content">
             <img src="{{ asset('img/main/sliced-anjir.png') }}" class="modal-content__background">
             <h2 class="modal-title">Купить в один клик</h2>
-            <img class="modal-image" id="buy-on-click-modal-image" src="{{ asset('img/products/1.jpg') }}" alt="feedback">
+            <img class="modal-image" id="buy-on-click-modal-image" src="{{ asset('img/main/feedback.png') }}">
 
             <form action="{{ route('feedback.store') }}" method="POST" class="modal-form" id="buy-on-click-form">
                 @csrf
