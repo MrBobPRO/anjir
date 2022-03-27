@@ -15,9 +15,9 @@
                 <span class="material-icons-outlined">phone_in_talk</span>
             </button>
 
-            <a href="#" class="header__basket gradient-bg">
+            <a href="{{ route('basket.index') }}" class="header__basket gradient-bg">
                 <span class="material-icons-outlined header__basket-icon">local_mall</span>
-                <span class="header__basket-discont">0</span>
+                <span class="header__basket-count" id="basket-products-count">{{ $productsInBasket }}</span>
             </a>
         </div>
     </div> {{-- Header Top end --}}

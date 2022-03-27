@@ -40,7 +40,6 @@ class MainController extends Controller
         // session()->forget('basket');
         // session()->put('basket', $prods);
 
-        // dd(session('basket'));
         $novelty = Product::latest()->take(10)->get();
 
         return view('home.index', compact('novelty'));

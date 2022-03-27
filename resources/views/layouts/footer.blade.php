@@ -10,7 +10,7 @@
 
         <div class="footer__block">
             <ul class="footer__links">
-                <li><a href="#">О нас</a></li>
+                <li><a href="{{ route('about-us') }}">О нас</a></li>
                 <li><a href="#">Пользовательское соглашение</a></li>
                 <li><a href="#">Защита сайта</a></li>
             </ul>

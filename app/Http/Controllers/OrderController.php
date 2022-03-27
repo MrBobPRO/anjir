@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\OrderedProduct;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -26,16 +25,11 @@ class OrderController extends Controller
         $order->phone = $request->phone;
         $order->save();
 
-        $orderedProduct = new OrderedProduct();
-        $orderedProduct->product_id = $request->product_id;
-        $orderedProduct->order_id = $order->id;
-        $orderedProduct->size = $request->size;
-        $orderedProduct->amount = $request->amount;
-        $orderedProduct->save();
+        $order->products()->attach($request->product_id, ['size' => $request->size, 'amount' => $request->amount]);
 
         session(['order' => 'requested']);
 
-        return redirect()->route('orders.success', $orderedProduct->product_id);
+        return redirect()->route('orders.success', $request->product_id);
     }
 
     /**
@@ -51,6 +45,19 @@ class OrderController extends Controller
         } else {
             return redirect()->home();
         }
+    }
+
+    /**
+     * On success
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkout()
+    {
+        session()->forget('basket');
+        session(['order' => 'requested']);
+
+        return redirect()->route('orders.success', 'array');
     }
 
     /**

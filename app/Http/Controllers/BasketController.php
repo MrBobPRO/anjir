@@ -13,28 +13,54 @@ class BasketController extends Controller
      */
     public function index()
     {
-        //
+        $items = session('basket');
+        if(!$items || count($items) == 0) {
+            $items = null;
+        }
+
+        return view('basket.index', compact('items'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
+     * Ajax store product in basket (session)
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $products = session('basket');
+
+        //remove from basket if product already exists
+        if($products) {
+            foreach($products as $product) {
+                if($product['product_id'] == $request->product_id) {
+                    if (($key = array_search($product, $products)) !== false) {
+                        unset($products[$key]);
+                    }
+
+                    session()->put('basket', $products);
+    
+                    return [
+                        'action' => 'removed',
+                        'productsInBasket' => session('basket') ? count(session('basket')) : 0
+                    ];
+                }
+            }
+        }
+
+        //else add into basket
+        session()->push('basket', [
+            'product_id' => $request->product_id,
+            'size' => $request->size,
+            ]
+        );
+
+        return [
+            'action' => 'stored',
+            'productsInBasket' => session('basket') ? count(session('basket')) : 0
+        ];
     }
 
     /**

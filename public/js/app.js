@@ -78,6 +78,39 @@ document.querySelectorAll('[data-action="buy-on-click"]').forEach(item => {
 });
 
 
+//add into basket
+document.querySelectorAll('[data-action="add-into-basket"]').forEach(item => {
+    item.addEventListener('click', event => {
+        let form = item.closest('.product-card__form');
+        let data = new FormData(form);
+
+        $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            url: '/add-into-basket',
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+
+            success: function (response) {
+                if (response.action == 'stored') {
+                    item.innerHTML = 'убрать из корзины <img src="/img/main/remove-from-basket.png">';
+                } else if (response.action == 'removed') {
+                    item.innerHTML = 'в корзину <img src="/img/main/add-to-basket.png">'
+                }
+
+                document.getElementById('basket-products-count').innerHTML = response.productsInBasket;
+            },
+            error: function () {
+                console.log('Ajax add into basket failed !');
+            }
+        });
+    });
+});
+
+
 //counter increment & decrement buttons
 document.querySelectorAll('.increment-amount').forEach(item => {
     item.addEventListener('click', event => {

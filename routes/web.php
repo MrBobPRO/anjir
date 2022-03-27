@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\MainController;
@@ -31,6 +32,10 @@ Route::get('/tovar/{id}', [ProductController::class, 'show'])->name('products.sh
 
 Route::post('/buy-on-click', [OrderController::class, 'buyOnClick'])->name('orders.buy-on-click');
 Route::get('/korzina/{id}', [OrderController::class, 'success'])->name('orders.success');
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
+
+Route::get('/korzina', [BasketController::class, 'index'])->name('basket.index');
+Route::post('/add-into-basket', [BasketController::class, 'store'])->name('basket.store');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

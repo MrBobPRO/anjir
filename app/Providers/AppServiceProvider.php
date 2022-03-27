@@ -34,7 +34,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer(['layouts.header'], function ($view) {
-            $view->with('categories', Category::orderBy('priority')->get());
+            $view->with('categories', Category::orderBy('priority')->get())
+                ->with('productsInBasket', session('basket') ? count(session('basket')) : 0);
         });
     }
 }

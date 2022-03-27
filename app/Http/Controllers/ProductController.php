@@ -76,7 +76,9 @@ class ProductController extends Controller
             ->where('id', '!=', $product->id)
             ->paginate(16);
 
-        return view('products.show', compact('product', 'title', 'similarProducts'));
+        $productsInBasket = session('basket') ? session('basket') : [];
+
+        return view('products.show', compact('product', 'title', 'similarProducts', 'productsInBasket'));
     }
 
     /**

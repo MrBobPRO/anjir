@@ -1,4 +1,4 @@
-@props(['product'])
+@props(['product', 'productsInBasket' => session('basket') ? session('basket') : []])
 
 <div class="product-card">
     <form action="#" class="product-card__form">
@@ -33,8 +33,22 @@
                 <img src="{{ asset('img/main/tap.png') }}" alt="tap">
             </button>
     
-            <button class="gradient-bg" type="button">В корзину
-                <img src="{{ asset('img/main/add-to-basket.png') }}" alt="add into basket">
+            <button class="gradient-bg" type="button" data-action="add-into-basket">
+                @php
+                    $existsInBasket = false;
+
+                    foreach ($productsInBasket as $prodInBask) {
+                        if($prodInBask['product_id'] == $product->id) {
+                            $existsInBasket = true;
+                        }
+                    }
+                @endphp
+
+                @if($existsInBasket) 
+                    Убрать из корзины <img src="{{ asset('img/main/remove-from-basket.png') }}" alt="remove from basket">
+                @else
+                    В корзину <img src="{{ asset('img/main/add-to-basket.png') }}" alt="add into basket">
+                @endif
             </button>
         </div>
     </form>
