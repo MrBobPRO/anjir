@@ -1,3 +1,11 @@
+// Add headers into Ajax Request
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+
 //owl carousels
 let mainCarousel = $("#main-carousel");
 if (mainCarousel[0]) {
@@ -155,5 +163,58 @@ let onlyNumberInputs = document.getElementsByClassName('only-numbers');
 for (let input of onlyNumberInputs) {
     setInputFilter(input, function(value) {
         return /^\d*\d*$/.test(value);
+    });
+}
+
+
+//AJAX Checkout
+let checkoutForm = document.getElementById('checkout-form');
+if (checkoutForm) {
+    checkoutForm.addEventListener('submit', event => {
+        event.preventDefault();
+        let productIds = [];
+        let productSizes = [];
+        let productAmounts = [];
+
+        let productsSection = document.getElementsByClassName('products-list-section')[0];
+        let forms = productsSection.getElementsByClassName('product-card__form');
+
+        for (let form of forms) {
+            let id = form.querySelector('input[name="product_id"]').value;
+            let size = form.querySelector('input[name="size"]:checked').value;
+            let amount = form.querySelector('input[name="amount"]').value;
+
+            if (amount && amount > 0) {
+                productIds.push(id);
+                productSizes.push(size);
+                productAmounts.push(amount);
+            }
+        }
+
+        let order = {
+            'name': document.getElementById('checkout-form-name').value,
+            'phone': document.getElementById('checkout-form-phone').value,
+            'promocode': document.getElementById('checkout-form-promocode').value,
+            'products': {
+                'ids': productIds,
+                'sizes': productSizes,
+                'amounts': productAmounts
+            }
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/checkout',
+            data: order,
+            cache: false,
+            timeout: 600000,
+
+            success: function (url) {
+                window.location = url;
+            },
+            error: function () {
+                console.log('Ajax checkout failed !');
+            }
+        });
     });
 }

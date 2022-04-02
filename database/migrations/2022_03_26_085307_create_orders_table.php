@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
+            $table->string('promocode')->nullable();
             $table->timestamps();
         });
     }

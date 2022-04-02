@@ -52,12 +52,39 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function checkout()
+    public function checkout(Request $request)
     {
+        //redirect home case none product ordered
+        if(!$request->products) {
+            session()->forget('basket');
+
+            return route('home');
+        }
+
+        $orderedProductsCount = count($request->products['ids']);
+        if(!$orderedProductsCount) {
+            session()->forget('basket');
+
+            return route('home');
+        }
+
+        //else create new order
+        $order = new Order();
+        $order->name = $request->name;
+        $order->phone = $request->phone;
+        $order->promocode = $request->promocode;
+        $order->save();
+
+        for($i=0; $i<$orderedProductsCount; $i++) {
+            $order->products()->attach($request->products['ids'][$i], [
+                'size' => $request->products['sizes'][$i], 'amount' => $request->products['amounts'][$i]
+            ]);
+        }
+
         session()->forget('basket');
         session(['order' => 'requested']);
 
-        return redirect()->route('orders.success', 'array');
+        return route('orders.success', $request->products['ids'][0]);
     }
 
     /**

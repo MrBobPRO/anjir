@@ -59,12 +59,12 @@
             </div>
 
             @if($items)
-                <form action="{{ route('orders.checkout') }}" method="POST" class="checkout-form" id="checkout-form">
+                <form class="checkout-form" id="checkout-form">
                     @csrf
 
-                    <input type="text" class="gradient-bg" name="name" placeholder="Ф.И.О" required>
-                    <input type="text" class="gradient-bg" name="phone" placeholder="номер телефона" required>
-                    <input type="text" class="gradient-bg" name="promocode" placeholder="введите промокод">
+                    <input type="text" class="gradient-bg" name="name" id="checkout-form-name" placeholder="Ф.И.О" required>
+                    <input type="text" class="gradient-bg" name="phone" id="checkout-form-phone" placeholder="номер телефона" required>
+                    <input type="text" class="gradient-bg" name="promocode" id="checkout-form-promocode" placeholder="введите промокод">
                     <button class="gradient-bg">заказать</button>
                 </form>
             @endif
