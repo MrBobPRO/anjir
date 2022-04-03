@@ -218,3 +218,47 @@ if (checkoutForm) {
         });
     });
 }
+
+
+//debounce function (замыкания)
+function debounce (callback, timeoutDelay = 500) {
+    // Используем замыкания, чтобы id таймаута у нас навсегда приклеился
+    // к возвращаемой функции с setTimeout, тогда мы его сможем перезаписывать
+    let timeoutId;
+  
+    return (...rest) => {
+      // Перед каждым новым вызовом удаляем предыдущий таймаут,
+      // чтобы они не накапливались
+      clearTimeout(timeoutId);
+  
+      // Затем устанавливаем новый таймаут с вызовом колбэка на ту же задержку
+      timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  
+      // Таким образом цикл «поставить таймаут - удалить таймаут» будет выполняться,
+      // пока действие совершается чаще, чем переданная задержка timeoutDelay
+    };
+}
+
+
+//Search
+let searchInput = document.getElementById('search-input');
+let searchResults = document.getElementById('search-results');
+
+function submitSearch() {
+    $.ajax({
+        type: 'POST',
+        url: '/search',
+        data: { 'keyword': searchInput.value },
+        cache: false,
+        timeout: 600000,
+
+        success: function (response) {
+            searchResults.innerHTML = response;
+        },
+        error: function () {
+            console.log('Ajax search failed !');
+        }
+    });
+}
+
+const debounceSearch = debounce(() => submitSearch());

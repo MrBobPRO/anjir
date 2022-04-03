@@ -6,8 +6,10 @@
         </a>
 
         <form action="#" class="search gradient-bg">
-            <input type="text" class="search__input" name="keyword" placeholder="поиск товара">
+            <input type="text" class="search__input" autocomplete="off" id="search-input" placeholder="поиск товара" oninput="debounceSearch()">
             <span class="material-icons-outlined search__icon">search</span>
+            
+            <ul class="search-results" id="search-results"></ul>
         </form>
 
         <div class="header__actions">

@@ -26,8 +26,8 @@
         <div class="footer__block">
             <p>Мы в соц.медиа</p>
             <ul class="footer__socials">
-                <li><a href="#">@include('svgs.facebook')</a></li>
-                <li><a href="#">@include('svgs.instagram')</a></li>
+                <li><a href="https://www.facebook.com/Anjir.store" target="_blank">@include('svgs.facebook')</a></li>
+                <li><a href="https://www.instagram.com/anjir.tj/" target="_blank">@include('svgs.instagram')</a></li>
             </ul>
             <p>Наши контакты</p>
             <ul class="footer__links">

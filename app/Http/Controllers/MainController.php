@@ -57,4 +57,16 @@ class MainController extends Controller
 
         return view('products.discounts', compact('category', 'products', 'categoryUrl'));
     }
+
+    public function search(Request $request)
+    {
+        if(mb_strlen($request->keyword) < 2) {
+            $products = null;
+        } else {
+            $products = Product::where('title', 'LIKE', '%' . $request->keyword . '%')->get();
+        }
+
+        return view('components.search-results', compact('products'));
+    }
+
 }
