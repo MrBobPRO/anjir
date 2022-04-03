@@ -914,6 +914,7 @@ button {
 .search__input:focus ~ .search-results {
     transform: scaleY(1);
     opacity: 1;
+    transition: 0.3s linear;
 }
 .search-results {
     position: absolute;
@@ -932,7 +933,7 @@ button {
     overflow: auto;
     width: 100%;
     margin: 8px 0 0;
-    transition: 0.3s linear;
+    transition: 0.3s linear 0.1s;
     top: 100%;
     z-index: 2;
     padding: 0;
