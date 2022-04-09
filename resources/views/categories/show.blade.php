@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $category->name)
+
 @section('main')
 
 <main class="category-page" role="main">

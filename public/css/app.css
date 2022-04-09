@@ -158,6 +158,16 @@ button {
     align-items: center;
     justify-content: center;
 }
+.header__nav {
+    position: relative;
+    overflow: hidden;
+}
+.header__nav-image {
+    position: absolute;
+    width: 80px;
+    right: 8px;
+    top: -2px;
+}
 .header__nav ul {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -171,6 +181,7 @@ button {
     font-size: 18px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 .header__nav a::after {
     display: flex;
@@ -182,6 +193,19 @@ button {
     margin-top: 2px;
     background-color: white;
 }
+.header__nav-discounts span {
+    position: absolute;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    right: -12px;
+    top: -8px;
+    font-size: 14px;
+}
 /* ------------ /end Header  ------------ */
 
 
@@ -192,15 +216,12 @@ button {
 .footer__top {
     padding-top: 40px;
     padding-bottom: 40px;
-    gap: 100px;
+    justify-content: space-between;
 }
 .footer__block {
     display: flex;
     flex-direction: column;
     gap: 8px;
-}
-.footer__block:first-child {
-    flex-grow: 1;
 }
 .footer__block:last-child {
     text-align: right;
@@ -811,6 +832,21 @@ button {
 .buy-on-click-sizes input:checked + label::after {
     background: white;
 }
+.policy-modal .modal-dialog {
+    max-width: 480px;
+}
+.policy-modal__text {
+    color: white;
+    margin: 0;
+    line-height: 1.6;
+}
+.modal-close-btn {
+    position: absolute;
+    width: 14px;
+    top: 20px;
+    right: 40px;
+    cursor: pointer;
+}
 /* ------------ /end Modal  ------------ */
 
 
@@ -924,12 +960,11 @@ button {
     box-shadow: 0 0 4px 0px #00000044;
     border-radius: 8px;
     flex-direction: column;
-    gap: 8px;
     transform: scaleY(0);
     transform-origin: top;
     right: 0;
     opacity: 0;
-    max-height: 258px;
+    max-height: 242px;
     overflow: auto;
     width: 100%;
     margin: 8px 0 0;

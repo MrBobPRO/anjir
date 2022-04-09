@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Корзина')
+
 @section('main')
 
 <main class="basket-page" role="main">

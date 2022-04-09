@@ -42,12 +42,14 @@ if (noveltyCarousel[0]) {
 document.querySelectorAll('[data-action="show-modal"]').forEach(item => {
     item.addEventListener('click', event => {
         document.getElementById(item.dataset.targetId).classList.add('show');
+        document.body.style.overflowY = "hidden";
     });
 });
 
 //hide modals
 document.querySelectorAll('[data-action="hide-modal"]').forEach(item => {
     item.addEventListener('click', event => {
+        document.body.style.overflowY = "auto";
         document.getElementById(item.dataset.targetId).classList.remove('show');
     });
 });
@@ -82,6 +84,7 @@ document.querySelectorAll('[data-action="buy-on-click"]').forEach(item => {
         document.getElementById('buy-on-click-modal-amount').value = 1;
         //show modal
         document.getElementById('buy-on-click-modal').classList.add('show');
+        document.body.style.overflowY = "hidden";
     });
 });
 

@@ -1,5 +1,21 @@
 @extends('layouts.app')
 
+@section('title', $product->title)
+
+@section('meta-tags')
+    @php
+        $shareText = App\Helpers\Helper::cleanShareText($product->description);
+    @endphp
+
+    <meta name="description" content="{{ $shareText }}">
+    <meta property="og:description" content="{{ $shareText }}">
+    <meta property="og:title" content="{{ $product->title }}" />
+    <meta property="og:image" content="{{ asset('img/products/' . $product->image) }}">
+    <meta property="og:image:alt" content="{{ $product->title }}">
+    <meta name="twitter:title" content="{{ $product->title }}">
+    <meta name="twitter:image" content="{{ asset('img/products/' . $product->image) }}">
+@endsection
+
 @section('main')
 
 <main class="products-show-page" role="main">

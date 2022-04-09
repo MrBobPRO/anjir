@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'О Нас')
+
 @section('main')
 
 <main class="about-us-page" role="main">

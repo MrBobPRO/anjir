@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Скидки')
+
 @section('main')
 
 <main class="discounts-page" role="main">
