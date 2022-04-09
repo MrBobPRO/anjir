@@ -23,7 +23,7 @@
     @hasSection ('meta-tags')
         @yield('meta-tags')
     @else
-        @php $shareText = 'Магазин одежды со вкусом стиля. Купите товары с выгодной ценой и быстрой доставкой!'; @endphp
+        @php $shareText = 'Магазин одежды со вкусом стиля. Купите товары с выгодной ценой и с быстрой доставкой!'; @endphp
         <meta name="description" content="{{ $shareText }}">
         <meta property="og:description" content="{{ $shareText }}">
         <meta property="og:title" content="Anjir" />
