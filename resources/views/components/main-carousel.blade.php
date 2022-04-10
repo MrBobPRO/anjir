@@ -1,11 +1,13 @@
-<section class="main-carousel-container">
-    <div class="owl-carousel main-container main-carousel" id="main-carousel">
-        <div class="main-carousel__item">
-            <img src="{{ asset('img/slides/3.jpg') }}" alt="">
-        </div>
+@props(['slides'])
 
-        <div class="main-carousel__item">
-            <img src="{{ asset('img/slides/2.jpg') }}" alt="">
+@if($slides && count($slides))
+    <section class="main-carousel-container">
+        <div class="owl-carousel main-container main-carousel" id="main-carousel">
+            @foreach ($slides as $slide)
+                <div class="main-carousel__item">
+                    <img src="{{ asset('img/slides/' . $slide->image) }}">
+                </div>
+            @endforeach
         </div>
-    </div>
-</section>
+    </section>
+@endif

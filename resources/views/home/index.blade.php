@@ -3,7 +3,7 @@
 @section('main')
 
 <main class="home-page" role="main">
-    <x-main-carousel />
+    <x-main-carousel :slides="$slides" />
 
     <section class="advantages">
         <div class="main-container advantages__inner">
@@ -38,7 +38,7 @@
         </div>
     </section>
 
-    <section class="home-stock">
+    {{-- <section class="home-stock">
         <div class="main-container home-stock__inner">
             <div class="home-stock__item">
                 <a href="#">
@@ -63,7 +63,7 @@
                 <a href="#" class="gradient-bg">Заказать</a>
             </div>
         </div>
-    </section>
+    </section> --}}
 </main>
 
 @endsection

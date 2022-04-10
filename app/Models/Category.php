@@ -13,4 +13,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class);
     }
+
+    public function slides()
+    {
+        return $this->hasMany(Slide::class);
+    }
 }

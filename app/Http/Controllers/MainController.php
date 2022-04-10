@@ -4,45 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Slide;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function home()
     {
-        //storing item into basket
-        // session([
-        //     'basket' => [[
-        //         'product_id' => 1,
-        //         'order_id' => 2,
-        //         'size' => 1,
-        //         'amount' => 2
-        //     ]]
-        // ]);
-
-        //pushing item into basket
-        // session()->push('basket',
-        //     [
-        //         'product_id' => 2,
-        //         'order_id' => 9,
-        //         'size' => 'XL',
-        //         'amount' => 66
-        //     ]);
-
-        //removing item from basket
-        // $prods = session('basket');
-        // for($i=0; $i<count($prods); $i++) {
-        //     if($prods[$i]['order_id'] == 9) {
-        //         unset($prods[$i]);
-        //     }
-        // }
-
-        // session()->forget('basket');
-        // session()->put('basket', $prods);
-
+        $slides = Slide::where('category_id', 0)->inRandomOrder()->get();
         $novelty = Product::latest()->take(10)->get();
 
-        return view('home.index', compact('novelty'));
+        return view('home.index', compact('novelty', 'slides'));
     }
 
     public function aboutUs()
@@ -54,8 +26,9 @@ class MainController extends Controller
     {
         $category = Category::where('url', $categoryUrl)->first();
         $products = $category->products()->where('discount', '!=', 0)->paginate(16);
+        $slides = Slide::where('category_id', -1)->inRandomOrder()->get();
 
-        return view('products.discounts', compact('category', 'products', 'categoryUrl'));
+        return view('products.discounts', compact('category', 'products', 'categoryUrl', 'slides'));
     }
 
     public function search(Request $request)

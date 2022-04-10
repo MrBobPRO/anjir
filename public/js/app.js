@@ -12,7 +12,8 @@ if (mainCarousel[0]) {
     mainCarousel.owlCarousel({
         items: 1,
         loop: true,
-        margin: 40
+        margin: 40,
+        autoHeight: true
     });
 }
 

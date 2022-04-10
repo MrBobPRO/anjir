@@ -17,7 +17,7 @@
         </div>
     </section>
 
-    <x-main-carousel />
+    <x-main-carousel :slides="$slides"/>
 
     <section class="products-list-section">
         <div class="main-container products-list-section__inner">

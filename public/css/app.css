@@ -421,7 +421,7 @@ button {
 
 
 /* ------------ Stock  ------------ */
-.home-stock__inner {
+/* .home-stock__inner {
     display: flex;
     gap: 40px;
     align-items: center;
@@ -463,7 +463,7 @@ button {
     padding: 8px 40px;
     border-radius: 8px;
     margin-top: 20px;
-}
+} */
 /* ------------ /end Stock  ------------ */
 
 
