@@ -32,9 +32,19 @@
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
         
-                <img class="product-card__image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
+                <div class="product-card__divider-left">
+                    <img class="product-card__image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
+
+                    @if(count($product->images))
+                        <div class="products-lightbox">
+                            @foreach ($product->images as $image)
+                                <img class="lightboxed" rel="group1" src="{{ asset('img/products/additional/' . $image->name) }}" alt="{{ $product->title }}" data-link="{{ asset('img/products/additional/' . $image->name) }}" >
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
         
-                <div class="product-card__divider">
+                <div class="product-card__divider-right">
                     <div class="gradient-bg product-card__badget">
                         <h2>{{ $product->title }}</h2>
                         <p>{{ $product->price }} сом</p>

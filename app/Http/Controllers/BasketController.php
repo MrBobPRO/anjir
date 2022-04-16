@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -14,6 +15,21 @@ class BasketController extends Controller
     public function index()
     {
         $items = session('basket');
+
+        //check if any deleted product exists in basket and remove it
+        if($items) {
+            foreach($items as $item) {
+                $product = Product::find($item['product_id']);
+                if(!$product) {
+                    if (($key = array_search($item, $items)) !== false) {
+                        unset($items[$key]);
+                    }
+                }
+            }
+    
+            session()->put('basket', $items);
+        }
+
         if(!$items || count($items) == 0) {
             $items = null;
         }

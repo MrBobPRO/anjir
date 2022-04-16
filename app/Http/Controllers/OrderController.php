@@ -54,7 +54,7 @@ class OrderController extends Controller
      */
     public function checkout(Request $request)
     {
-        //redirect home case none product ordered
+        //redirect home case none products ordered
         if(!$request->products) {
             session()->forget('basket');
 
