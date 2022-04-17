@@ -6,7 +6,7 @@
                 <img class="search-results__image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
                 <div class="search-results__info">
                     <h6>{{ $product->title }}</h6>
-                    <p>{{ $product->price }} сом</p>
+                    <p>{{ $product->final_price }} сом</p>
                 </div>
             </a>
         </li>

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\Helper;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 
@@ -17,15 +18,17 @@ class ProductSeeder extends Seeder
         $title = ['Кроссовки 1', 'Кроссовки 2', 'Кроссовки 3', 'Кроссовки 4', 'Кроссовки 5', 'Кроссовки 6'];
         $image = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
         $description = 'Google, предназначенная для автоматического перевода части текста или веб-страницы на другой язык. Для некоторых языков пользователям предлагаются варианты переводов, например, для технических терминов, которые должны быть в будущем включены в обновления системы перевода.';
-        $discount = [0,0,5,10,15,0,20];
+        $price = [80,140,225,65,180,200];
+        $discount = [0,5,0,10,25,0];
 
         for($i=0; $i<count($title); $i++) {
             $product = new Product();
             $product->title = $title[$i];
             $product->image = $image[$i];
             $product->description = $description;
-            $product->discount = $discount[array_rand($discount)];
-            $product->price = rand(60, 220);
+            $product->price = $price[$i];
+            $product->discount = $discount[$i];
+            $product->final_price = Helper::calculateFinalPrice($price[$i], $discount[$i]);
             $product->size_type_id = rand(1,2);
             $product->save();
 

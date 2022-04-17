@@ -9,7 +9,7 @@
                     <span>new</span>
                 </div>
                 <h2>{{ $product->title }}</h2>
-                <p>{{ $product->price }} сом</p>
+                <p>{{ $product->final_price }} сом</p>
             </a>
         @endforeach
     </div>

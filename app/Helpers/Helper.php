@@ -230,4 +230,20 @@ class Helper
 
         return $routeName;
     }
+
+    /**
+     * Calculate products final price according to real price and discount
+     *
+     * @return integer final price
+     */
+    public static function calculateFinalPrice($price, $discount)
+    {
+        if($discount == 0) {
+            return $price;
+        } else {
+            $discounted = $price * $discount / 100;
+        }
+
+        return intval($price - $discounted);
+    }
 }

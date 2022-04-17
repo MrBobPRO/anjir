@@ -6,7 +6,7 @@ $.ajaxSetup({
 });
 
 
-//owl carousels
+//Main carousels
 let mainCarousel = $("#main-carousel");
 if (mainCarousel[0]) {
     mainCarousel.owlCarousel({
@@ -17,6 +17,7 @@ if (mainCarousel[0]) {
     });
 }
 
+//Novelty carousel
 let noveltyCarousel = $("#novelty-carousel");
 if (noveltyCarousel[0]) {
     noveltyCarousel.owlCarousel({
@@ -35,6 +36,47 @@ if (noveltyCarousel[0]) {
     let owlNavNext = document.getElementById("novelty-carousel-next-nav");
     owlNavNext.addEventListener("click", function () {
         noveltyCarousel.trigger('next.owl.carousel');
+    });
+}
+
+
+//Lightbox carousels
+let productShowCarousel = $("#product-show-carousel");
+if (productShowCarousel[0]) {
+    productShowCarousel.owlCarousel({
+        items: 1,
+        margin: 20,
+        loop: true,
+        autoHeight: true,
+        dots: false
+    });
+
+    // Owl carousel navigations
+    let owlNavPrev = document.getElementById("product-show-carousel-prev-nav");
+    if (owlNavPrev) {
+        owlNavPrev.addEventListener("click", function () {
+            productShowCarousel.trigger('prev.owl.carousel');
+        });
+    }
+
+    let owlNavNext = document.getElementById("product-show-carousel-next-nav");
+    if (owlNavNext) {
+        owlNavNext.addEventListener("click", function () {
+            productShowCarousel.trigger('next.owl.carousel');
+        });
+    }
+}
+
+
+//Lightbox carousels
+let lightboxCarousel = $("#lightbox-carousel");
+if (lightboxCarousel[0]) {
+    lightboxCarousel.owlCarousel({
+        items: 3,
+        margin: 20,
+        loop: false,
+        rewind: true,
+        dots: false
     });
 }
 

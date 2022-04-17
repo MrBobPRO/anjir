@@ -183,14 +183,14 @@ button {
     align-items: center;
     position: relative;
 }
-.header__nav a::after {
+.header__nav a::before {
     display: flex;
     content: '';
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    margin-left: 8px;
-    margin-top: 2px;
+    margin-right: 8px;
+    margin-top: 3px;
     background-color: white;
 }
 .header__nav-discounts span {
@@ -202,7 +202,7 @@ button {
     height: 28px;
     align-items: center;
     justify-content: center;
-    right: -12px;
+    right: -22px;
     top: -8px;
     font-size: 14px;
 }
@@ -659,22 +659,34 @@ button {
 }
 .product-card__divider-left {
     min-width: 400px;
+    width: 400px;
 }
-.products-lightbox {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+
+/* Products Show carousel */
+.product-show-carousel-container {
+    width: 100%;
+}
+.product-show-carousel__image {
+    width: 100%;
+    border: 1px solid #cecece;
+    border-radius: 12px;
+}
+.product-show-carousel-container .owl-nav {
+    top: calc(50% - 16px);
+    border-radius: 50%;
+}
+
+/* lightbox carousel */
+.lightbox-carousel-container {
+    width: 100%;
     margin-top: 20px;
 }
-.products-lightbox .lightboxed {
+img.lightboxed {
     width: 120px;
     border: 1px solid #cecece;
     border-radius: 8px;
 }
-.product-card__divider-left .product-card__image {
-    width: 100%;
-    border: 1px solid #cecece;
-}
+
 .product-card__divider-right {
     flex-grow: 1;
     padding: 0 80px;

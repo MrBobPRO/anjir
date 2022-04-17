@@ -33,13 +33,34 @@
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
         
                 <div class="product-card__divider-left">
-                    <img class="product-card__image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
+                    <div class="owl-carousel-container product-show-carousel-container">
+                        <div class="owl-carousel product-show-carousel" id="product-show-carousel">
+                            <div class="product-show-carousel__item">
+                                <img class="product-show-carousel__image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
+                            </div>
+
+                            @foreach ($product->images as $image)
+                                <div class="product-show-carousel__item">
+                                    <img class="product-show-carousel__image" src="{{ asset('img/products/additional/' . $image->name) }}" alt="{{ $product->title }}">
+                                </div>
+                            @endforeach
+                        </div>
+
+                        @if(count($product->images))
+                            <span class="material-icons-outlined unselectable owl-nav owl-nav--prev" id="product-show-carousel-prev-nav">arrow_back_ios</span>
+                            <span class="material-icons-outlined unselectable owl-nav owl-nav--next" id="product-show-carousel-next-nav">arrow_forward_ios</span>
+                        @endif
+                    </div>
 
                     @if(count($product->images))
-                        <div class="products-lightbox">
-                            @foreach ($product->images as $image)
-                                <img class="lightboxed" rel="group1" src="{{ asset('img/products/additional/' . $image->name) }}" alt="{{ $product->title }}" data-link="{{ asset('img/products/additional/' . $image->name) }}" >
-                            @endforeach
+                        <div class="owl-carousel-container lightbox-carousel-container">
+                            <div class="owl-carousel lightbox-carousel" id="lightbox-carousel">
+                                @foreach ($product->images as $image)
+                                    <div class="lightbox-carousel__item">
+                                        <img class="lightboxed" rel="group1" src="{{ asset('img/products/additional/' . $image->name) }}" alt="{{ $product->title }}" data-link="{{ asset('img/products/additional/' . $image->name) }}" >
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     @endif
                 </div>
@@ -47,7 +68,7 @@
                 <div class="product-card__divider-right">
                     <div class="gradient-bg product-card__badget">
                         <h2>{{ $product->title }}</h2>
-                        <p>{{ $product->price }} сом</p>
+                        <p>{{ $product->final_price }} сом</p>
                     </div>
 
                     <div class="product-card__sizes">

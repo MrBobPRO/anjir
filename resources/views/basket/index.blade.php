@@ -30,7 +30,7 @@
                                     <img class="product-card__image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
                                     <div class="gradient-bg product-card__badget">
                                         <h2>{{ $product->title }}</h2>
-                                        <p>{{ $product->price }} сом</p>
+                                        <p>{{ $product->final_price }} сом</p>
                                     </div>
                                 </a>
                         
