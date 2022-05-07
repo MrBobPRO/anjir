@@ -20,6 +20,7 @@ class ProductSeeder extends Seeder
         $description = 'Google, предназначенная для автоматического перевода части текста или веб-страницы на другой язык. Для некоторых языков пользователям предлагаются варианты переводов, например, для технических терминов, которые должны быть в будущем включены в обновления системы перевода.';
         $price = [80,140,225,65,180,200];
         $discount = [0,5,0,10,25,0];
+        $size_type_id = [1,2,2,2,1,1];
 
         for($i=0; $i<count($title); $i++) {
             $product = new Product();
@@ -29,7 +30,7 @@ class ProductSeeder extends Seeder
             $product->price = $price[$i];
             $product->discount = $discount[$i];
             $product->final_price = Helper::calculateFinalPrice($price[$i], $discount[$i]);
-            $product->size_type_id = rand(1,2);
+            $product->size_type_id = $size_type_id[$i];
             $product->save();
 
             $product->categories()->attach(rand(1,2));

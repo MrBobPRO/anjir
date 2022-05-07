@@ -1,16 +1,16 @@
-// Initializing components on document ready
+//initialize plugins and components
 $(document).ready(function () {
-    $(".selectize-singular").selectize({
+    $('.selectize-singular').selectize({
         //options
     });
 
-    $(".selectize-singular-linked").selectize({
+    $('.selectize-singular-linked').selectize({
         onChange(value) {
             window.location = value;
         }
     });
 
-    $(".selectize-multiple").selectize({
+    $('.selectize-multiple').selectize({
         //options
     });
 });
@@ -58,33 +58,24 @@ for (i = 0; i < editors.length; i++) {
 
 
 //toggle Aside Visibility
-function toggle_aside() {
-    let content = document.getElementById("content")
-    content.classList.toggle("content--max");
+let content = document.getElementById('content')
+let asideToggler = document.getElementById('aside-toggler')
+
+function toggleAside() {
+    content.classList.toggle('content--max');
+
+    if (asideToggler.innerHTML == 'chevron_left') {
+        asideToggler.innerHTML = 'menu';
+    } else {
+        asideToggler.innerHTML = 'chevron_left';
+    }
 }
 
 
-// One modal is used for deleting any items in Main Form
-// Change the value of input and show Single Item Remove Modal
-function show_item_remove_modal(id) {
-    let modal = new bootstrap.Modal(document.getElementById('remove_item_modal'));
-    let input = document.getElementById("remove_item_modal_input");
-
-    input.value = id;
-    modal.show();
-}
-
-
-// Submit Main Form on Remove selected items modal button click
-function submit_main_form() {
-    document.getElementById("main_form").submit();
-}
-
-
-// Select or diselect all Main Forms checboxes
-function select_all_checkboxes() {
-    let main_form = document.getElementById("main_form")
-    let checkboxes = main_form.getElementsByClassName("checkbox__input");
+//toggle checkboxes
+function toggleCheckboxes() {
+    let tableForm = document.getElementById('table-form')
+    let checkboxes = tableForm.querySelectorAll('input[type="checkbox"]');
     let all_checked = true;
 
     for (chb of checkboxes) {
@@ -110,41 +101,39 @@ function select_all_checkboxes() {
 }
 
 
-// initialize JSON Formatter
-function getJson() {
-    if (document.getElementById('json-input')) {
-        try {
-            return JSON.parse($('#json-input').val());
-        } catch (ex) {
-            console.log('Wrong JSON Format: ' + ex);
+// MODALS FOR DELETING ITEMS
+// One modal is used for deleting any item in Table Form
+function showSingleDestroyModal(id) {
+    // Change the value of input and show Single Item Destroy Modal
+    let modal = new bootstrap.Modal(document.getElementById('destroy-single-modal'));
+    document.getElementById('destroy-single-modal-input').value = id;
+
+    modal.show();
+}
+
+// Submit Table Form on Multiple destroy button click
+function submitTableForm() {
+    document.getElementById('table-form').submit();
+}
+
+
+// Show image from local on image input change
+document.querySelectorAll('[data-action="show-image-from-local"]').forEach(input => {
+    input.addEventListener("change", event => {
+        var file = input.files[0];
+        var imageType = /image.*/;
+
+        if (file.type.match(imageType)) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                document.getElementById(input.dataset.target).src = reader.result;
+            }
+
+            reader.readAsDataURL(file);	
+        } else {
+            input.value = '';
+            alert('Формат файла не поддерживается!');
         }
-    }
-}
-
-if ($('#json-display')) {
-    let editor = new JsonEditor('#json-display', getJson());
-    editor.load(getJson());
-}
-
-// validate json input before form submit
-function validate_json_input(event) {
-    let json_display = document.getElementById('json-display');
-    let json_input = document.getElementById('json-input');
-
-    if(isValidJson(json_display.textContent)) {
-        json_input.value = json_display.textContent;
-    } else {
-        event.preventDefault();
-        alert('Пожалуйста, исправьте ошибки прежде чем сохранить файл!');
-    }
-}
-
-function isValidJson(str) {
-    try {
-        if (typeof str != 'string') return false;
-        JSON.parse(str);
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
+    });
+});

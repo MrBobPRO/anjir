@@ -92,30 +92,24 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dashIndex(Request $request)
     {
-        //
-    }
+        // for search
+        $items = Order::select('name as title', 'id')->orderBy('title')->get();
+        $editRoute = 'dashboard.orders.show';
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        // Generate parameters for ordering
+        $orderBy = $request->orderBy ? $request->orderBy : 'created_at';
+        $orderType = $request->orderType ? $request->orderType : 'asc';
+        $activePage = $request->page ? $request->page : 1;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $orders = Order::orderBy($orderBy, $orderType)
+                        ->paginate(30, ['*'], 'page', $activePage)
+                        ->appends($request->except('page'));
+
+        $reversedOrderType = $orderType == 'asc' ? 'desc' : 'asc';
+
+        return view('dashboard.orders.index', compact('items', 'editRoute', 'orders', 'orderBy', 'orderType', 'activePage', 'reversedOrderType'));
     }
 
     /**
@@ -124,32 +118,13 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function dashShow($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
+        $order = Order::find($id);
+        $order->new = 0;
+        $order->save();
+        
+        return view('dashboard.orders.show', compact('order'));
     }
 
     /**

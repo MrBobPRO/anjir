@@ -78,7 +78,7 @@
         <form class="form" method="POST" action="{{ route('login') }}">
             @csrf
 
-            <img class="logo" src="{{ asset('img/main/logo.svg') }}">
+            <img class="logo" src="{{ asset('img/main/logo.png') }}">
 
             <!-- Email Address -->
             <div class="form-group">
@@ -95,7 +95,7 @@
             <!-- Remember Me -->
             <div class="form-group">
                 <label class="label" for="remember_me">
-                    <input id="remember_me" type="checkbox" name="remember">
+                    <input id="remember_me" type="checkbox" name="remember" checked>
                     <span>Remember me</span>
                 </label>
             </div>

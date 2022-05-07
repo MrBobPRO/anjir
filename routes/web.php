@@ -38,7 +38,10 @@ Route::get('/korzina', [BasketController::class, 'index'])->name('basket.index')
 Route::post('/add-into-basket', [BasketController::class, 'store'])->name('basket.store');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/dashboard', [OrderController::class, 'dashIndex'])->name('dashboard.index');
+    Route::get('/dashboard/orders/{id}', [OrderController::class, 'dashShow'])->name('dashboard.orders.show');
+
+    Route::post('/orders/destroy', [OrderController::class, 'destroy'])->name('orders.destroy');
 });
 
 require __DIR__.'/auth.php';
