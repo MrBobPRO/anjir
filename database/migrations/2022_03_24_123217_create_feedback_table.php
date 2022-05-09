@@ -17,6 +17,7 @@ class CreateFeedbackTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
+            $table->boolean('new')->default(1);
             $table->timestamps();
         });
     }

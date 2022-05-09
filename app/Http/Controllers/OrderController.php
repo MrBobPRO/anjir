@@ -94,7 +94,7 @@ class OrderController extends Controller
      */
     public function dashIndex(Request $request)
     {
-        // for search
+        // for search (items also used as a counter in header)
         $items = Order::select('name as title', 'id')->orderBy('title')->get();
         $editRoute = 'dashboard.orders.show';
 
@@ -128,13 +128,22 @@ class OrderController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Request for deleting items by id may come in integer type (single destroy form) 
+     * or in array type (multiple destroy form)
+     * That`s why we need to get them in array type and delete them by loop
      *
-     * @param  \App\Models\Order  $order
+     * @param  int/array  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Request $request)
     {
-        //
+        $ids = (array) $request->id;
+        
+        foreach($ids as $id) {
+            $order = Order::find($id);
+            $order->delete();
+        }
+        
+        return redirect()->route('dashboard.index');
     }
 }

@@ -2,6 +2,7 @@
     <h1 class="header__title">
         {{-- first level --}}
         @if(strpos($route, 'orders') !== false  || $route == 'dashboard.index') Заказы 
+        @elseif(strpos($route, 'feedbacks') !== false) Обратная связь
         @elseif(strpos($route, 'researches') !== false) Исследования
         @elseif(strpos($route, 'slides') !== false) Слайдер
         @elseif(strpos($route, 'mailing') !== false) Email рассылка
@@ -10,8 +11,9 @@
         {{-- second level for CREATE --}}
         @if($route == 'products.relations.create') / {{ $relationTitle }} / Добавить
         @elseif(strpos($route, 'create') ) / Добавить
-        {{-- second level for EDIT --}}
+        {{-- second level for EDIT & SHOW --}}
         @elseif($route == 'dashboard.orders.show') / № {{ $order->id }}
+        @elseif($route == 'dashboard.feedbacks.show') / № {{ $feedback->id }}
         @elseif($route == 'products.relations.edit') / {{ $relationTitle }} / {{ $item->title }}
         @elseif($route == 'researches.edit') / {{ $research->title }}
         @elseif($route == 'slides.edit') / {{ $slide->title }}
@@ -19,7 +21,7 @@
         @endif
 
         {{-- items count --}}
-        {{-- @if(strpos($route, 'index')) ({{ count($items) }}) @endif --}}
+        @if(strpos($route, 'index')) ({{ count($items) }}) @endif
     </h1>
 
     <div class="header__actions">
@@ -32,10 +34,10 @@
             @break
         @endswitch
 
-        {{-- Multiple Delete buttons for all index routes --}}
+        {{-- Multiple Delete buttons for all index page routes --}}
         @switch($route)
             @case('dashboard.index')
-            @case('dashboard.researches.index')
+            @case('dashboard.feedbacks.index')
             @case('dashboard.slides.index')
             @case('dashboard.mailing.index')
             @case('products.relations.index')

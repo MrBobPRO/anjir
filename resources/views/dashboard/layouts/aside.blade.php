@@ -12,25 +12,37 @@
             </li>
 
             <li>
-                <a class="@if( strpos($route, 'orders') !== false || $route == 'dashboard.index') active @endif" href="{{route('dashboard.index')}}">
+                <a class="@if(strpos($route, 'orders') !== false || $route == 'dashboard.index') active @endif" href="{{route('dashboard.index')}}">
                     <span class="material-icons">medication</span> Заказы
+                    @if($newOrdersCount > 0)
+                        ({{ $newOrdersCount }})
+                    @endif
                 </a>
             </li>
 
             <li>
-                <a class="@if( strpos($route, 'researches') !== false ) active @endif" href="{{route('dashboard.index')}}">
+                <a class="@if(strpos($route, 'feedbacks') !== false) active @endif" href="{{route('dashboard.feedbacks.index')}}">
+                    <span class="material-icons">phone_in_talk</span> Обрат. связь
+                    @if($newFeedbacksCount > 0)
+                        ({{ $newFeedbacksCount }})
+                    @endif
+                </a>
+            </li>
+
+            <li>
+                <a class="@if(strpos($route, 'researches') !== false) active @endif" href="{{route('dashboard.index')}}">
                     <span class="material-icons">article</span> Товары
                 </a>
             </li>
 
             <li>
-                <a class="@if( strpos($route, 'mailing') !== false ) active @endif" href="{{route('dashboard.index')}}">
+                <a class="@if(strpos($route, 'mailing') !== false) active @endif" href="{{route('dashboard.index')}}">
                     <span class="material-icons">email</span> Категории
                 </a>
             </li>
 
             <li>
-                <a class="@if( strpos($route, 'slides') !== false ) active @endif" href="{{route('dashboard.index')}}">
+                <a class="@if(strpos($route, 'slides') !== false) active @endif" href="{{route('dashboard.index')}}">
                     <span class="material-icons">collections</span> Слайды
                 </a>
             </li>

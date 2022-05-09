@@ -62,47 +62,62 @@ class FeedbackController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashIndex(Request $request)
+    {
+        // for search (items also used as a counter in header)
+        $items = Feedback::select('name as title', 'id')->orderBy('title')->get();
+        $editRoute = 'dashboard.feedbacks.show';
+
+        // Generate parameters for ordering
+        $orderBy = $request->orderBy ? $request->orderBy : 'created_at';
+        $orderType = $request->orderType ? $request->orderType : 'asc';
+        $activePage = $request->page ? $request->page : 1;
+
+        $feedbacks = Feedback::orderBy($orderBy, $orderType)
+                        ->paginate(30, ['*'], 'page', $activePage)
+                        ->appends($request->except('page'));
+
+        $reversedOrderType = $orderType == 'asc' ? 'desc' : 'asc';
+
+        return view('dashboard.feedbacks.index', compact('items', 'editRoute', 'feedbacks', 'orderBy', 'orderType', 'activePage', 'reversedOrderType'));
+    }
+
+    /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Feedback  $feedback
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Feedback $feedback)
+    public function dashShow($id)
     {
-        //
+        $feedback = Feedback::find($id);
+        $feedback->new = 0;
+        $feedback->save();
+        
+        return view('dashboard.feedbacks.show', compact('feedback'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Request for deleting items by id may come in integer type (single destroy form) 
+     * or in array type (multiple destroy form)
+     * That`s why we need to get them in array type and delete them by loop
      *
-     * @param  \App\Models\Feedback  $feedback
+     * @param  int/array  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Feedback $feedback)
+    public function destroy(Request $request)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Feedback  $feedback
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Feedback $feedback)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Feedback  $feedback
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Feedback $feedback)
-    {
-        //
+        $ids = (array) $request->id;
+        
+        foreach($ids as $id) {
+            $feedback = Feedback::find($id);
+            $feedback->delete();
+        }
+        
+        return redirect()->route('dashboard.feedbacks.index');
     }
 }

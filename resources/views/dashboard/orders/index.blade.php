@@ -77,7 +77,7 @@
                         @endforeach
                     </td>
                     <td>{!! $order->new ? '<span class="new">Новый</span>' : 'Просмотрено' !!}</td>
-                    <td>{{ Carbon\Carbon::create($order->created_at)->locale("ru")->isoFormat("DD MMMM YYYY HH:mm:ss") }}</td>
+                    <td>{{ Carbon\Carbon::create($order->created_at)->locale('ru')->isoFormat('DD MMMM YYYY HH:mm:ss') }}</td>
 
                     {{-- Actions --}}
                     <td width="120">

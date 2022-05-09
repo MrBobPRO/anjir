@@ -38,10 +38,27 @@ Route::get('/korzina', [BasketController::class, 'index'])->name('basket.index')
 Route::post('/add-into-basket', [BasketController::class, 'store'])->name('basket.store');
 
 Route::group(['middleware' => 'auth'], function () {
+    // orders
     Route::get('/dashboard', [OrderController::class, 'dashIndex'])->name('dashboard.index');
     Route::get('/dashboard/orders/{id}', [OrderController::class, 'dashShow'])->name('dashboard.orders.show');
 
     Route::post('/orders/destroy', [OrderController::class, 'destroy'])->name('orders.destroy');
+    
+    // feedback
+    Route::get('/dashboard/feedbacks', [FeedbackController::class, 'dashIndex'])->name('dashboard.feedbacks.index');
+    Route::get('/dashboard/feedbacks/{id}', [FeedbackController::class, 'dashShow'])->name('dashboard.feedbacks.show');
+
+    Route::post('/feedbacks/destroy', [FeedbackController::class, 'destroy'])->name('feedbacks.destroy');
+
+    // products
+    Route::get('/dashboard/products', [ProductController::class, 'dashBoardIndex'])->name('dashboard.products.index');
+    Route::get('/dashboard/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::get('/dashboard/products/{id}', [ProductController::class, 'edit'])->name('products.edit');
+
+    Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+    Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
+    Route::post('/products/destroy', [ProductController::class, 'destroy'])->name('products.destroy');
+
 });
 
 require __DIR__.'/auth.php';
