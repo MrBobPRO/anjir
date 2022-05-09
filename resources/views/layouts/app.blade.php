@@ -38,7 +38,7 @@
     <link rel="icon" href="{{ asset('img/main/cropped-favicon-32x32.ico') }}" sizes="32x32">
     <link rel="icon" href="{{ asset('img/main/cropped-favicon-192x192.ico') }}" sizes="192x192">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('img/main/cropped-favicon-180x180.ico') }}">
-    <meta name="msapplication-TileImage" content="{{ asset('img/main/cropped-favicon-270x270.ico') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('img/main/cropped-favicon-256x256.ico') }}">
 
     {{-- Open Sans Google fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

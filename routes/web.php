@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/feedbacks/destroy', [FeedbackController::class, 'destroy'])->name('feedbacks.destroy');
 
     // products
-    Route::get('/dashboard/products', [ProductController::class, 'dashBoardIndex'])->name('dashboard.products.index');
+    Route::get('/dashboard/products', [ProductController::class, 'dashIndex'])->name('dashboard.products.index');
     Route::get('/dashboard/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::get('/dashboard/products/{id}', [ProductController::class, 'edit'])->name('products.edit');
 

@@ -427,6 +427,9 @@ img {
 .table__actions span {
     font-size: 22px;
 }
+.main-table__product-image {
+    width: 120px;   
+}
 /* ------------ /end Items Table ------------ */
 
 

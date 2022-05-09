@@ -15,8 +15,8 @@ class SizeSeeder extends Seeder
      */
     public function run()
     {
-        $title = ['Одежда', 'Туфли'];
-        $tag = ['clothes', 'shoes'];
+        $title = ['Буквенные', 'Цифровые'];
+        $tag = ['literal', 'numerical'];
         for($i=0; $i<count($title); $i++) {
             $type = new SizeType();
             $type->title = $title[$i];

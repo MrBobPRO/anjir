@@ -82,6 +82,31 @@ class ProductController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashIndex(Request $request)
+    {
+        // for search (items also used as a counter in header)
+        $items = Product::select('title', 'id')->orderBy('title')->get();
+        $editRoute = 'products.edit';
+
+        // Generate parameters for ordering
+        $orderBy = $request->orderBy ? $request->orderBy : 'created_at';
+        $orderType = $request->orderType ? $request->orderType : 'asc';
+        $activePage = $request->page ? $request->page : 1;
+
+        $products = Product::orderBy($orderBy, $orderType)
+                        ->paginate(30, ['*'], 'page', $activePage)
+                        ->appends($request->except('page'));
+
+        $reversedOrderType = $orderType == 'asc' ? 'desc' : 'asc';
+
+        return view('dashboard.products.index', compact('items', 'editRoute', 'products', 'orderBy', 'orderType', 'activePage', 'reversedOrderType'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Product  $product

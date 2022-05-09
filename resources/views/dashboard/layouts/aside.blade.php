@@ -30,7 +30,7 @@
             </li>
 
             <li>
-                <a class="@if(strpos($route, 'researches') !== false) active @endif" href="{{route('dashboard.index')}}">
+                <a class="@if(strpos($route, 'products') !== false) active @endif" href="{{route('dashboard.products.index')}}">
                     <span class="material-icons">article</span> Товары
                 </a>
             </li>

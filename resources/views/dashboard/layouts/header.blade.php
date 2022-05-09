@@ -3,32 +3,30 @@
         {{-- first level --}}
         @if(strpos($route, 'orders') !== false  || $route == 'dashboard.index') Заказы 
         @elseif(strpos($route, 'feedbacks') !== false) Обратная связь
-        @elseif(strpos($route, 'researches') !== false) Исследования
+        @elseif(strpos($route, 'products') !== false) Продукты
         @elseif(strpos($route, 'slides') !== false) Слайдер
         @elseif(strpos($route, 'mailing') !== false) Email рассылка
         @endif
 
+        {{-- First levels items count --}}
+        @if(strpos($route, 'index')) ({{ count($items) }}) @endif
+
         {{-- second level for CREATE --}}
-        @if($route == 'products.relations.create') / {{ $relationTitle }} / Добавить
-        @elseif(strpos($route, 'create') ) / Добавить
+        @if(strpos($route, 'create') ) / Добавить
         {{-- second level for EDIT & SHOW --}}
         @elseif($route == 'dashboard.orders.show') / № {{ $order->id }}
         @elseif($route == 'dashboard.feedbacks.show') / № {{ $feedback->id }}
-        @elseif($route == 'products.relations.edit') / {{ $relationTitle }} / {{ $item->title }}
-        @elseif($route == 'researches.edit') / {{ $research->title }}
+        @elseif($route == 'products.edit') / {{ $product->title }}
         @elseif($route == 'slides.edit') / {{ $slide->title }}
         @elseif($route == 'products.relations.index') / {{ $relationTitle }}
         @endif
-
-        {{-- items count --}}
-        @if(strpos($route, 'index')) ({{ count($items) }}) @endif
     </h1>
 
     <div class="header__actions">
         {{-- Create Buttons --}}
         @switch($route)
-            @case('dashboard.slides.index')
-                <a href="{{route('slides.create')}}">
+            @case('dashboard.products.index')
+                <a href="{{route('products.create')}}">
                     <span class="material-icons">add</span> Добавить
                 </a>
             @break
@@ -38,7 +36,7 @@
         @switch($route)
             @case('dashboard.index')
             @case('dashboard.feedbacks.index')
-            @case('dashboard.slides.index')
+            @case('dashboard.products.index')
             @case('dashboard.mailing.index')
             @case('products.relations.index')
                 <button onclick="toggleCheckboxes()">
