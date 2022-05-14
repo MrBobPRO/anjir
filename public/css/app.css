@@ -656,6 +656,7 @@ button {
     display: flex;
     gap: 120px;
     align-items: flex-start;
+    width: 100%;
 }
 .product-card__divider-left {
     min-width: 400px;

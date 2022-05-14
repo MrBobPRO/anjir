@@ -9,8 +9,4 @@ class Size extends Model
 {
     use HasFactory;
 
-    public function type()
-    {
-        return $this->belongsTo(SizeType::class, 'type_id');
-    }
 }

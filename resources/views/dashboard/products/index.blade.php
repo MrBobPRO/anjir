@@ -23,11 +23,11 @@
                 </th>
 
                 <th>
-                    <a class="{{$orderType}} {{$orderBy == 'final_price' ? 'active' : ''}}" href="{{route('dashboard.products.index')}}?page={{$activePage}}&orderBy=final_price&orderType={{$reversedOrderType}}">Цена (сом)</a>
+                    <a class="{{$orderType}} {{$orderBy == 'final_price' ? 'active' : ''}}" href="{{route('dashboard.products.index')}}?page={{$activePage}}&orderBy=final_price&orderType={{$reversedOrderType}}">Цена со скидкой</a>
                 </th>
 
                 <th>
-                    <a class="{{$orderType}} {{$orderBy == 'discount' ? 'active' : ''}}" href="{{route('dashboard.products.index')}}?page={{$activePage}}&orderBy=discount&orderType={{$reversedOrderType}}">Скидка (%)</a>
+                    <a class="{{$orderType}} {{$orderBy == 'discount' ? 'active' : ''}}" href="{{route('dashboard.products.index')}}?page={{$activePage}}&orderBy=discount&orderType={{$reversedOrderType}}">Скидка</a>
                 </th>
 
                 <th>
@@ -56,8 +56,8 @@
 
                     <td><img class="main-table__product-image" src="{{ asset('img/products/' . $product->image) }}"></td>
                     <td>{{ $product->title }}</td>
-                    <td>{{ $product->final_price }}</td>
-                    <td>{{ $product->discount }}</td>
+                    <td>{{ $product->final_price }} сом</td>
+                    <td>{{ $product->discount }}%</td>
                     <td>{{ Carbon\Carbon::create($product->created_at)->locale('ru')->isoFormat('DD MMMM YYYY HH:mm:ss') }}</td>
 
                     {{-- Actions --}}

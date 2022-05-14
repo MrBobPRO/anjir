@@ -3,6 +3,7 @@
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -58,6 +59,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
     Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
     Route::post('/products/destroy', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    // images (products additional images)
+    Route::post('/images/store', [ImageController::class, 'store'])->name('images.store');
+    Route::post('/images/destroy', [ImageController::class, 'destroy'])->name('images.destroy');
 
 });
 

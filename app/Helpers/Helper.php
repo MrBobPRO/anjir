@@ -12,9 +12,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Helper
 {
-    const INSTRUCTIONS_PATH = 'instructions';
     const PRODUCTS_PATH = 'img/products';
-    const RESEARCHES_PATH = 'img/researches';
+    const PRODUCTS_ADDITIONAL_PATH = 'img/products/additional';
     const SLIDES_PATH = 'img/slides';
 
     /**
@@ -245,5 +244,19 @@ class Helper
         }
 
         return intval($price - $discounted);
+    }
+
+    /**
+     * Rename file if file with the given name is already exists on the given folder
+     * 
+     * @param string $path
+     * @param string $filename
+     * @return string
+     */
+    public static function deleteFile($path)
+    {
+        if(file_exists($path)) {
+            unlink($path);
+        }
     }
 }

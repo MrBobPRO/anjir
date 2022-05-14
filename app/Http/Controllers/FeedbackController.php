@@ -74,7 +74,7 @@ class FeedbackController extends Controller
 
         // Generate parameters for ordering
         $orderBy = $request->orderBy ? $request->orderBy : 'created_at';
-        $orderType = $request->orderType ? $request->orderType : 'asc';
+        $orderType = $request->orderType ? $request->orderType : 'desc';
         $activePage = $request->page ? $request->page : 1;
 
         $feedbacks = Feedback::orderBy($orderBy, $orderType)

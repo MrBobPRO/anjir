@@ -3,7 +3,7 @@
         {{-- first level --}}
         @if(strpos($route, 'orders') !== false  || $route == 'dashboard.index') Заказы 
         @elseif(strpos($route, 'feedbacks') !== false) Обратная связь
-        @elseif(strpos($route, 'products') !== false) Продукты
+        @elseif(strpos($route, 'products') !== false) Товары
         @elseif(strpos($route, 'slides') !== false) Слайдер
         @elseif(strpos($route, 'mailing') !== false) Email рассылка
         @endif

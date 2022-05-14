@@ -14,11 +14,6 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function sizeType()
-    {
-        return $this->belongsTo(SizeType::class);
-    }
-
     public function sizes()
     {
         return $this->belongsToMany(Size::class);

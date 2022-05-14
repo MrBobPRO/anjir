@@ -137,3 +137,22 @@ document.querySelectorAll('[data-action="show-image-from-local"]').forEach(input
         }
     });
 });
+
+
+// calculate final price for product
+
+document.querySelectorAll('[data-on-change="calculate-final-price"]').forEach(input => {
+    input.addEventListener('input', (evt) => {
+        let productPriceInput = document.querySelector('#product-price-input');
+        let discount = document.querySelector('#discount-input').value;
+        let finalPriceInput = document.querySelector('#final-price-input');
+
+        if (discount == 0) {
+            finalPriceInput.value = productPriceInput.value;
+
+        } else {
+            discounterPrice = productPriceInput.value * discount / 100;
+            finalPriceInput.value = parseInt(productPriceInput.value - discounterPrice);
+        }
+    });
+});

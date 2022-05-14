@@ -27,7 +27,7 @@
                     <p class="order-list__item-title">{{ $product->title }}</p>
                     <p class="order-list__item-text">Цена за единицу: {{ $product->price }} сом.</p>
                     <p class="order-list__item-text">Скидка за единицу: {{ $product->discount }}%</p>
-                    <p class="order-list__item-text">Финальная цена за единицу: <span class="order-list__highlight">{{ $product->final_price }} сом.</span></p>
+                    <p class="order-list__item-text">Цена со скидкой за единицу: <span class="order-list__highlight">{{ $product->final_price }} сом.</span></p>
                 </div>
 
                 <div class="order-list__item-block">

@@ -479,6 +479,14 @@ img {
     box-shadow: 0 0px 20px 0px #e91e6370;
     outline: 0;
 }
+.form-input[type=number]:read-only {
+    background-color: whitesmoke;
+    cursor: not-allowed;
+}
+.form-input[type=number]:read-only:focus {
+    box-shadow: none;
+    border: 1px solid #c9d8db;
+}
 .form__actions {
     display: flex;
     gap: 12px;
@@ -792,3 +800,47 @@ input[type="file"]:after {
     }
 }
 /* ------------ /end Media ------------ */
+
+
+/* ------------ Product Images Actions ------------ */
+.product-images-actions {
+    max-width: 880px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 16px 30px;
+    font-size: 13px;
+    background: white;
+}
+.product-images-actions h2 {
+    font-size: 14px;
+    font-weight: 700;
+    background: var(--main-color);
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 4px;
+    color: white;
+}
+.prodct-images-destroy-form {
+    width: 50%;
+    position: relative;
+}
+.prodct-images-destroy-form img {
+    width: 100%;
+    margin: 0;
+}
+.prodct-images-destroy-form button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: black;
+    border-radius: 50%;
+    color: var(--danger-color);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+/* ------------ /end Product Images Actions ------------ */

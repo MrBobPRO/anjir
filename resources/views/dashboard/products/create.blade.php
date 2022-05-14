@@ -1,31 +1,27 @@
 @extends('dashboard.layouts.app')
 @section("main")
 
-<form action="{{ route('researches.store') }}" method="POST" class="form" enctype="multipart/form-data">
+<form action="{{ route('products.store') }}" method="POST" class="form" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group">
         <label class="required">Заголовок</label>
-        <textarea class="form-textarea" name="title" rows="5" required>{{ old("title") }}</textarea>
+        <input class="form-input" name="title" type="text" value="{{ old('title') }}" required>
     </div>
 
     <div class="form-group">
-        <label class="required">Подзаголовок</label>
-        <textarea class="form-textarea" name="subtitle" rows="5" required>{{ old("subtitle") }}</textarea>
+        <label class="required">Цена</label>
+        <input class="form-input" name="price" type="number" id="product-price-input" data-on-change="calculate-final-price" value="{{ old('price') }}" required>
     </div>
 
     <div class="form-group">
-        <label class="required">Текст</label>
-        <textarea class="simditor-wysiwyg" name="body" required>{{ old("body") }}</textarea>
+        <label class="required">Скидка (%)</label>
+        <input class="form-input" name="discount" type="number" id="discount-input" data-on-change="calculate-final-price" value="{{ old('discount') != '' ? old('discount') : 0 }}" required>
     </div>
 
     <div class="form-group">
-        <label class="required">Продукт</label>
-        <select class="selectize-singular" name="product_id">
-            @foreach ($products as $product)
-                <option value="{{ $product->id }}">{{ $product->name }}</option>
-            @endforeach
-        </select>
+        <label class="required">Цена со скидкой</label>
+        <input class="form-input" type="number" id="final-price-input" name="final_price" value="{{ old('final_price') != '' ? old('final_price') : 0 }}" readonly>
     </div>
 
     <div class="form-group">
@@ -34,6 +30,29 @@
         data-action="show-image-from-local" data-target="local-image">
 
         <img class="form-image" src="{{ asset('img/dashboard/default-image.png') }}" id="local-image">
+    </div>
+
+    <div class="form-group">
+        <label class="required">Категории</label>
+        <select class="selectize-multiple" name="categories[]" multiple="multiple" required>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="required">Размеры</label>
+        <select class="selectize-multiple" name="sizes[]" multiple="multiple" required>
+            @foreach ($sizes as $size)
+                <option value="{{ $size->id }}">{{ $size->title }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="required">Описание</label>
+        <textarea class="form-textarea" name="description" rows="5" required>{{ old("description") }}</textarea>
     </div>
 
     <div class="form__actions">
