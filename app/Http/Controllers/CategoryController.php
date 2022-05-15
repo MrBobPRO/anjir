@@ -9,16 +9,6 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -135,6 +125,12 @@ class CategoryController extends Controller
 
             // detach all relations
             $category->products()->detach();
+
+            // delete category slides
+            foreach($category->slides as $slide) {
+                Helper::deleteFile(public_path('img/slides/'. $slide->image));
+                $slide->delete();
+            }
 
             $category->delete();
         }

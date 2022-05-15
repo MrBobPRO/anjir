@@ -49,7 +49,7 @@
                     <td>
                         @if($slide->category_id == 0) Главная
                         @elseif($slide->category_id == -1) Скидки
-                        @else {{ $slide->category ? $slide->category->name : 'Категория удалена !' }}
+                        @else {{ $slide->category->name }}
                         @endif
                     </td>
 
