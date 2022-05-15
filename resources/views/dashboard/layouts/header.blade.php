@@ -4,8 +4,8 @@
         @if(strpos($route, 'orders') !== false  || $route == 'dashboard.index') Заказы 
         @elseif(strpos($route, 'feedbacks') !== false) Обратная связь
         @elseif(strpos($route, 'products') !== false) Товары
-        @elseif(strpos($route, 'slides') !== false) Слайдер
-        @elseif(strpos($route, 'mailing') !== false) Email рассылка
+        @elseif(strpos($route, 'categories') !== false) Категории
+        @elseif(strpos($route, 'slides') !== false) Слайды
         @endif
 
         {{-- First levels items count --}}
@@ -17,8 +17,8 @@
         @elseif($route == 'dashboard.orders.show') / № {{ $order->id }}
         @elseif($route == 'dashboard.feedbacks.show') / № {{ $feedback->id }}
         @elseif($route == 'products.edit') / {{ $product->title }}
-        @elseif($route == 'slides.edit') / {{ $slide->title }}
-        @elseif($route == 'products.relations.index') / {{ $relationTitle }}
+        @elseif($route == 'categories.edit') / {{ $category->name }}
+        @elseif($route == 'slides.edit') / {{ $slide->id }}
         @endif
     </h1>
 
@@ -30,6 +30,18 @@
                     <span class="material-icons">add</span> Добавить
                 </a>
             @break
+
+            @case('dashboard.categories.index')
+                <a href="{{route('categories.create')}}">
+                    <span class="material-icons">add</span> Добавить
+                </a>
+            @break
+
+            @case('dashboard.slides.index')
+                <a href="{{route('slides.create')}}">
+                    <span class="material-icons">add</span> Добавить
+                </a>
+            @break
         @endswitch
 
         {{-- Multiple Delete buttons for all index page routes --}}
@@ -37,8 +49,8 @@
             @case('dashboard.index')
             @case('dashboard.feedbacks.index')
             @case('dashboard.products.index')
-            @case('dashboard.mailing.index')
-            @case('products.relations.index')
+            @case('dashboard.categories.index')
+            @case('dashboard.slides.index')
                 <button onclick="toggleCheckboxes()">
                     <span class="material-icons">done_all</span> Отметить все
                 </button>

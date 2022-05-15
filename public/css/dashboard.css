@@ -430,6 +430,9 @@ img {
 .main-table__product-image {
     width: 120px;   
 }
+.main-table__slide-image {
+    width: 160px;
+}
 /* ------------ /end Items Table ------------ */
 
 

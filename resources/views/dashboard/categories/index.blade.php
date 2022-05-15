@@ -4,7 +4,7 @@
 @include('dashboard.layouts.search')
 
 {{-- Main form start --}}
-<form action="{{ route('researches.destroy') }}" method="POST" class="table-form" id="table-form">
+<form action="{{ route('categories.destroy') }}" method="POST" class="table-form" id="table-form">
     @csrf
     {{-- Table start --}}
     <table class="main-table" cellpadding = "8" cellspacing = "10">
@@ -15,15 +15,19 @@
                 <th width="20"></th>
 
                 <th>
-                    <a class="{{$orderType}} {{$orderBy == 'title' ? 'active' : ''}}" href="{{route('dashboard.researches.index')}}?page={{$activePage}}&orderBy=title&orderType={{$reversedOrderType}}">Заголовок</a>
+                    ID
                 </th>
 
                 <th>
-                    <a class="{{$orderType}} {{$orderBy == 'subtitle' ? 'active' : ''}}" href="{{route('dashboard.researches.index')}}?page={{$activePage}}&orderBy=subtitle&orderType={{$reversedOrderType}}">Подзаголовок</a>
+                    <a class="{{$orderType}} {{$orderBy == 'name' ? 'active' : ''}}" href="{{route('dashboard.categories.index')}}?page={{$activePage}}&orderBy=name&orderType={{$reversedOrderType}}">Заголовок</a>
                 </th>
 
                 <th>
-                    <a class="{{$orderType}} {{$orderBy == 'productName' ? 'active' : ''}}" href="{{route('dashboard.researches.index')}}?page={{$activePage}}&orderBy=productName&orderType={{$reversedOrderType}}">Продукт</a>
+                    <a class="{{$orderType}} {{$orderBy == 'priority' ? 'active' : ''}}" href="{{route('dashboard.categories.index')}}?page={{$activePage}}&orderBy=priority&orderType={{$reversedOrderType}}">Приоритет</a>
+                </th>
+
+                <th>
+                    <a class="{{$orderType}} {{$orderBy == 'created_at' ? 'active' : ''}}" href="{{route('dashboard.categories.index')}}?page={{$activePage}}&orderBy=created_at&orderType={{$reversedOrderType}}">Дата добавления</a>
                 </th>
 
                 <th width="120">
@@ -34,36 +38,37 @@
 
         {{-- Table Body start --}}
         <tbody>
-            @foreach ($researches as $research)
+            @foreach ($categories as $category)
                 <tr>
                     {{-- Checkbox for multidelete --}}
                     <td width="20">
                         <div class="checkbox">
-                            <label for="item{{$research->id}}">
-                                <input id="item{{$research->id}}" type="checkbox" name="id[]" value="{{$research->id}}">
+                            <label for="item{{$category->id}}">
+                                <input id="item{{$category->id}}" type="checkbox" name="id[]" value="{{$category->id}}">
                                 <span></span>
                             </label>
                         </div>
                     </td>
 
-                    <td>{{ $research->title }}</td>
-                    <td>{{ $research->subtitle }}</td>
-                    <td>{{ $research->productName }}</td>
+                    <td>{{ $category->id }}</td>
+                    <td>{{ $category->name }}</td>
+                    <td>{{ $category->priority }}</td>
+                    <td>{{ Carbon\Carbon::create($category->created_at)->locale('ru')->isoFormat('DD MMMM YYYY HH:mm:ss') }}</td>
 
                     {{-- Actions --}}
                     <td width="120">
                         <div class="table__actions">
-                            <a class="button--main" href="{{ route('researches.show', $research->url) }}"
+                            <a class="button--main" href="{{ route('categories.show', $category->url) }}"
                                 target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Посмотреть">
                                 <span class="material-icons">visibility</span>
                             </a>
         
-                            <a class="button--secondary" href="{{ route('researches.edit', $research->id) }}" 
+                            <a class="button--secondary" href="{{ route('categories.edit', $category->id) }}" 
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать">
                                 <span class="material-icons">edit</span>
                             </a>
         
-                            <button class="button--danger" type="button" onclick="showSingleDestroyModal({{ $research->id }})"
+                            <button class="button--danger" type="button" onclick="showSingleDestroyModal({{ $category->id }})"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Удалить">
                                 <span class="material-icons">delete</span>
                             </button>
@@ -74,11 +79,11 @@
         </tbody>  {{-- Table Body end --}}
     </table>  {{-- Table end --}}
     
-    {{ $researches->links('dashboard.layouts.pagination') }}
+    {{ $categories->links('dashboard.layouts.pagination') }}
 </form>  {{-- Main form end --}}
 
 
-@include('dashboard.modals.single-destroy', ['destroyRoute' => 'researches.destroy', 'itemId' => '0'])
+@include('dashboard.modals.single-destroy', ['destroyRoute' => 'categories.destroy', 'itemId' => '0'])
 @include('dashboard.modals.multiple-destroy')
 
 @endsection

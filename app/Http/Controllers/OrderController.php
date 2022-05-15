@@ -141,6 +141,10 @@ class OrderController extends Controller
         
         foreach($ids as $id) {
             $order = Order::find($id);
+
+            // detach all relations
+            $order->products()->detach();
+
             $order->delete();
         }
         

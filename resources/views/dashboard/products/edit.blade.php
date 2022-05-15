@@ -118,7 +118,7 @@
             </div>
         </form>
     </div>
-</div>
+</div>  {{-- Product images form --}}
 
 @include('dashboard.modals.single-destroy', ['destroyRoute' => 'products.destroy', 'itemId' => $product->id ])
 

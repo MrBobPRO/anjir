@@ -193,6 +193,11 @@ class ProductController extends Controller
             // remove products primary image from storage
             Helper::deleteFile(public_path('img/products/'. $product->image));
 
+            // detach all relations
+            $product->categories()->detach();
+            $product->sizes()->detach();
+            $product->orders()->detach();
+
             $product->delete();
         }
         

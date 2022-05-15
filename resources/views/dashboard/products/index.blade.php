@@ -13,8 +13,12 @@
             <tr>
                 {{-- empty space for checkbox --}}
                 <th width="20"></th>
+                
+                <th>
+                    ID
+                </th>
 
-                <th width="120">
+                <th>
                     Изображение
                 </th>
 
@@ -31,7 +35,7 @@
                 </th>
 
                 <th>
-                    <a class="{{$orderType}} {{$orderBy == 'created_at' ? 'active' : ''}}" href="{{route('dashboard.products.index')}}?page={{$activePage}}&orderBy=created_at&orderType={{$reversedOrderType}}">Дата добавление</a>
+                    <a class="{{$orderType}} {{$orderBy == 'created_at' ? 'active' : ''}}" href="{{route('dashboard.products.index')}}?page={{$activePage}}&orderBy=created_at&orderType={{$reversedOrderType}}">Дата доб.</a>
                 </th>
 
                 <th width="120">
@@ -54,11 +58,12 @@
                         </div>
                     </td>
 
+                    <td>{{ $product->id }}</td>
                     <td><img class="main-table__product-image" src="{{ asset('img/products/' . $product->image) }}"></td>
                     <td>{{ $product->title }}</td>
                     <td>{{ $product->final_price }} сом</td>
                     <td>{{ $product->discount }}%</td>
-                    <td>{{ Carbon\Carbon::create($product->created_at)->locale('ru')->isoFormat('DD MMMM YYYY HH:mm:ss') }}</td>
+                    <td>{{ Carbon\Carbon::create($product->created_at)->locale('ru')->isoFormat('DD MMMM YYYY') }}</td>
 
                     {{-- Actions --}}
                     <td width="120">

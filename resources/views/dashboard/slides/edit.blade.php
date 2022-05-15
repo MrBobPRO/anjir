@@ -6,30 +6,15 @@
     <input type="hidden" name="id" value="{{ $slide->id }}">
 
     <div class="form-group">
-        <label class="required">Заголовок</label>
-        <input class="form-input" name="title" type="text" value="{{ $slide->title }}" required>
+        <label class="required">Выберите на какой странице отображать слайдер</label>
+        <select class="selectize-singular" name="category_id" required>
+            <option value="0" @if($slide->category_id == 0) selected @endif>Главная</option>
+            <option value="-1" @if($slide->category_id == -1) selected @endif>Скидки</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}" @if($slide->category_id == $category->id) selected @endif>{{ $category->name }}</option>
+            @endforeach
+        </select>
     </div>
-
-    <div class="form-group">
-        <label class="required">Текст</label>
-        <textarea class="form-textarea" name="body" required>{{ $slide->body }}</textarea>
-    </div>
-
-    <div class="form-group">
-        <label class="required">Приоритет</label>
-        <input class="form-input" name="priority" type="number" value="{{ $slide->priority }}" required>
-    </div>
-
-    <div class="form-group">
-        <label class="required">Текст кнопки</label>
-        <input class="form-input" name="button" type="text" value="{{ $slide->button }}" required>
-    </div>
-
-    <div class="form-group">
-        <label class="required">Полная ссылка кнопки включая https или http</label>
-        <input class="form-input" name="link" type="text" value="{{ $slide->link }}" required>
-    </div>
-
 
     <div class="form-group">
         <label>Изображение. Все изображение слайдера должны иметь одинаковые размеры! Рек/размер (1300x272 px)</label>

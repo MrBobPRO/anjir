@@ -36,13 +36,13 @@
             </li>
 
             <li>
-                <a class="@if(strpos($route, 'mailing') !== false) active @endif" href="{{route('dashboard.index')}}">
-                    <span class="material-icons">email</span> Категории
+                <a class="@if(strpos($route, 'categories') !== false) active @endif" href="{{route('dashboard.categories.index')}}">
+                    <span class="material-icons">category</span> Категории
                 </a>
             </li>
 
             <li>
-                <a class="@if(strpos($route, 'slides') !== false) active @endif" href="{{route('dashboard.index')}}">
+                <a class="@if(strpos($route, 'slides') !== false) active @endif" href="{{route('dashboard.slides.index')}}">
                     <span class="material-icons">collections</span> Слайды
                 </a>
             </li>

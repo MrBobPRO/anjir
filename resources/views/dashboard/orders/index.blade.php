@@ -22,7 +22,7 @@
                 <th width="20"></th>
 
                 <th>
-                    №
+                    ID
                 </th>
 
                 <th>

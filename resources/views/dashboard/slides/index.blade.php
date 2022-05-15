@@ -13,15 +13,15 @@
                 <th width="20"></th>
 
                 <th>
-                    Приоритет
+                    ID
                 </th>
 
                 <th>
-                    Заголовок
+                    Изображение
                 </th>
 
                 <th>
-                    Ссылка
+                    Страница
                 </th>
 
                 <th width="120">
@@ -44,18 +44,18 @@
                         </div>
                     </td>
 
-                    <td>{{ $slide->priority }}</td>
-                    <td>{{ $slide->title }}</td>
-                    <td>{{ $slide->link }}</td>
+                    <td>{{ $slide->id }}</td>
+                    <td><img class="main-table__slide-image" src="{{ asset('img/slides/' . $slide->image) }}"></td>
+                    <td>
+                        @if($slide->category_id == 0) Главная
+                        @elseif($slide->category_id == -1) Скидки
+                        @else {{ $slide->category ? $slide->category->name : 'Категория удалена !' }}
+                        @endif
+                    </td>
 
                     {{-- Actions --}}
                     <td width="120">
                         <div class="table__actions">
-                            <a class="button--main" href="{{ route('home') }}"
-                                target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Посмотреть">
-                                <span class="material-icons">visibility</span>
-                            </a>
-        
                             <a class="button--secondary" href="{{ route('slides.edit', $slide->id) }}" 
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать">
                                 <span class="material-icons">edit</span>

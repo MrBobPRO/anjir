@@ -7,6 +7,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SlideController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,6 +65,23 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/images/store', [ImageController::class, 'store'])->name('images.store');
     Route::post('/images/destroy', [ImageController::class, 'destroy'])->name('images.destroy');
 
+    // categories
+    Route::get('/dashboard/categories', [CategoryController::class, 'dashIndex'])->name('dashboard.categories.index');
+    Route::get('/dashboard/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::get('/dashboard/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+
+    Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+    Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
+    Route::post('/categories/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+    // slides
+    Route::get('/dashboard/slides', [SlideController::class, 'dashIndex'])->name('dashboard.slides.index');
+    Route::get('/dashboard/slides/create', [SlideController::class, 'create'])->name('slides.create');
+    Route::get('/dashboard/slides/{id}', [SlideController::class, 'edit'])->name('slides.edit');
+
+    Route::post('/slides/store', [SlideController::class, 'store'])->name('slides.store');
+    Route::post('/slides/update', [SlideController::class, 'update'])->name('slides.update');
+    Route::post('/slides/destroy', [SlideController::class, 'destroy'])->name('slides.destroy');
 });
 
 require __DIR__.'/auth.php';

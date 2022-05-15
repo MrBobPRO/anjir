@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.categories.create');
     }
 
     /**
@@ -35,7 +36,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $fields = ['name', 'priority'];
+        Helper::fillFields($request, $category, $fields);
+
+        $category->url = Helper::transliterateIntoLatin($request->name);
+        $category->save();
+
+        return redirect()->route('dashboard.categories.index');
     }
 
     /**
@@ -54,14 +62,41 @@ class CategoryController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashIndex(Request $request)
+    {
+        // for search (items also used as a counter in header)
+        $items = Category::select('name as title', 'id')->orderBy('title')->get();
+        $editRoute = 'categories.edit';
+
+        // Generate parameters for ordering
+        $orderBy = $request->orderBy ? $request->orderBy : 'priority';
+        $orderType = $request->orderType ? $request->orderType : 'asc';
+        $activePage = $request->page ? $request->page : 1;
+
+        $categories = Category::orderBy($orderBy, $orderType)
+                        ->paginate(30, ['*'], 'page', $activePage)
+                        ->appends($request->except('page'));
+
+        $reversedOrderType = $orderType == 'asc' ? 'desc' : 'asc';
+
+        return view('dashboard.categories.index', compact('items', 'editRoute', 'categories', 'orderBy', 'orderType', 'activePage', 'reversedOrderType'));
+    }
+    
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        return view('dashboard.categories.edit', compact( 'category'));
     }
 
     /**
@@ -71,19 +106,39 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request)
     {
-        //
+        $category = Category::find($request->id);
+        $fields = ['name', 'priority'];
+        Helper::fillFields($request, $category, $fields);
+
+        $category->url = Helper::transliterateIntoLatin($request->name);
+        $category->save();
+
+        return redirect()->back();
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Request for deleting items by id may come in integer type (single destroy form) 
+     * or in array type (multiple destroy form)
+     * That`s why we need to get them in array type and delete them by loop
      *
-     * @param  \App\Models\Category  $category
+     * @param  int/array  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request)
     {
-        //
+        $ids = (array) $request->id;
+        
+        foreach($ids as $id) {
+            $category = Category::find($id);
+
+            // detach all relations
+            $category->products()->detach();
+
+            $category->delete();
+        }
+        
+        return redirect()->route('dashboard.categories.index');
     }
 }

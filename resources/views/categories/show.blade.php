@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <x-main-carousel :slides="$category->slides" />
+    <x-main-carousel :slides="$category->slides()->inRandomOrder()->get()" />
 
     <section class="novelty categories-novelty">
         <div class="main-container novelty__inner">
