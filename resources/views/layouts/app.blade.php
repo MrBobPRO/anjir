@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="{{ asset('js/plugins/fullscrin-lightbox/lightboxed.css') }}">
     {{-- <link rel="stylesheet" href="{{ mix('css/minified/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/media.css') }}">
 </head>
 
 <body>

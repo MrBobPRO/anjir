@@ -13,14 +13,18 @@
         </form>
 
         <div class="header__actions">
-            <button class="order-call gradient-bg" data-action="show-modal" data-target-id="feedback-modal">
+            <button class="header__actions-item order-call gradient-bg" data-action="show-modal" data-target-id="feedback-modal">
                 <span class="material-icons-outlined">phone_in_talk</span>
             </button>
 
-            <a href="{{ route('basket.index') }}" class="header__basket gradient-bg">
+            <a href="{{ route('basket.index') }}" class="header__actions-item header__basket gradient-bg">
                 <span class="material-icons-outlined header__basket-icon">local_mall</span>
                 <span class="header__basket-count" id="basket-products-count">{{ $productsInBasket }}</span>
             </a>
+
+            <button class="header__actions-item menu-toggler gradient-bg" data-action="show-modal" data-target-id="feedback-modal">
+                <span class="material-icons-outlined">menu</span>
+            </button>
         </div>
     </div> {{-- Header Top end --}}
 

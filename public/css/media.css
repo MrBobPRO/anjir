@@ -1,0 +1,121 @@
+@media screen and (max-width: 991px) {
+    .main-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    main {
+        padding: 20px 0;
+    }
+
+
+    /* Header start */
+    .header__top {
+        flex-wrap: wrap;
+        padding: 20px 12px 0;
+    }
+    .logo img {
+        width: 130px;
+    }
+    .search {
+        width: 100%;
+        order: 3;
+        margin: 12px 0 0;
+    }
+    .search__input {
+        width: 100%;
+    }
+    .header__actions {
+        margin-left: auto;
+    }
+    .header__actions-item {
+        padding: 6px 8px;
+        height: 40px;
+    }
+    .header__nav {
+        display: none;
+    }
+    /* Header end */
+
+
+    /* Footer start */
+    .footer__top {
+        padding: 32px 12px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .footer__block {
+        width: 100%;
+    }
+    .footer__block:first-child p {
+        text-align: center;
+    }
+    .footer__logo {
+        margin: 0 auto;
+        width: max-content;
+    }
+    .footer__links a {
+        text-decoration: underline;
+    }
+    .footer__block:last-child {
+        text-align: left;
+    }
+    .footer__socials {
+        justify-content: flex-start;
+    }
+    .footer__copyright-border {
+        left: 20px;
+        right: 20px;
+    }
+    .footer__copyright p {
+        width: 100%;
+        text-align: center;
+    }
+    /* Footer end */
+
+
+    /* Home page start */
+    .advantages__inner {
+        padding: 20px 12px 28px;
+    }
+    .advantages__list {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .advantages__list li {
+        padding: 12px;
+        width: calc(50% - 6px);
+    }
+    .advantages__list h3 {
+        width: auto;
+        font-size: 15px;
+    }
+    .advantages__list img {
+        width: 48px;
+    }
+    /* Home page end */
+
+
+    /* Novelty start */
+    .novelty__title {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .novelty-item {
+        width: 240px;
+    }
+    .novelty-image-container span {
+        font-size: 16px;
+        width: 48px;
+        height: 48px;
+    }
+    .novelty-item h2 {
+        font-size: 15px;
+    }
+    .owl-nav--prev {
+        left: -10px;
+    }
+    .owl-nav--next {
+        right: -10px;
+    }
+    /* Novelty end */
+}

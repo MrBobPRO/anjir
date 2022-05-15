@@ -127,16 +127,8 @@ button {
     gap: 12px;
     align-items: center;
 }
-.order-call {
+.header__actions-item {
     border: none;
-    padding: 6px 32px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    color: white;
-}
-.header__basket {
     padding: 6px 32px;
     height: 44px;
     display: flex;
