@@ -21,7 +21,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Order::class);
     }
 
     public function images()

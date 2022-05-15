@@ -51,7 +51,7 @@ class ProductController extends Controller
 
         $product->categories()->attach($request->categories);
 
-        // order sizes by priority and attach themю --IMPORTANT
+        // order sizes by priority and attach them --IMPORTANT
         $sizes = Size::whereIn('id', $request->sizes)->orderBy('priority')->pluck('id');
         $product->sizes()->attach($sizes);
 
@@ -161,7 +161,7 @@ class ProductController extends Controller
         $product->categories()->detach();
         $product->categories()->attach($request->categories);
 
-        // order sizes by priority and attach themю --IMPORTANT
+        // order sizes by priority and attach them --IMPORTANT
         $product->sizes()->detach();
         $sizes = Size::whereIn('id', $request->sizes)->orderBy('priority')->pluck('id');
         $product->sizes()->attach($sizes);
