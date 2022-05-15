@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="product-card__sizes">
-                        @foreach ($product->sizes as $size)
+                        @foreach ($product->sizes()->orderBy('priority')->get() as $size)
                             @if(!$loop->first)
                                 <span>–</span>
                             @endif

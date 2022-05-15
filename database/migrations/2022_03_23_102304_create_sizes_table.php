@@ -16,7 +16,7 @@ class CreateSizesTable extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('priority'); // used to sort sizes by priority while storing products
+            $table->integer('priority'); // used to sort sizes by priority while displaying & storing products
             $table->timestamps();
         });
     }

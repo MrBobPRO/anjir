@@ -17,7 +17,7 @@
 
         <div class="product-card__sizes">
             <input type="hidden" name="product_id" value="{{ $product->id }}">
-            @foreach ($product->sizes as $size)
+            @foreach ($product->sizes()->orderBy('priority')->get() as $size)
                 @if(!$loop->first)
                     <span>–</span>
                 @endif
