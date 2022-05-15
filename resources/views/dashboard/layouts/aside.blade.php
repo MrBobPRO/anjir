@@ -48,6 +48,12 @@
             </li>
 
             <li>
+                <a class="@if(strpos($route, 'sizes') !== false) active @endif" href="{{route('dashboard.sizes.index')}}">
+                    <span class="material-icons">numbers</span> Размеры
+                </a>
+            </li>
+
+            <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit"><span class="material-icons">logout</span> Выйти</button>

@@ -6,6 +6,7 @@
         @elseif(strpos($route, 'products') !== false) Товары
         @elseif(strpos($route, 'categories') !== false) Категории
         @elseif(strpos($route, 'slides') !== false) Слайды
+        @elseif(strpos($route, 'sizes') !== false) Размеры
         @endif
 
         {{-- First levels items count --}}
@@ -19,6 +20,7 @@
         @elseif($route == 'products.edit') / {{ $product->title }}
         @elseif($route == 'categories.edit') / {{ $category->name }}
         @elseif($route == 'slides.edit') / {{ $slide->id }}
+        @elseif($route == 'sizes.edit') / {{ $size->title }}
         @endif
     </h1>
 
@@ -42,6 +44,12 @@
                     <span class="material-icons">add</span> Добавить
                 </a>
             @break
+
+            @case('dashboard.sizes.index')
+            <a href="{{route('sizes.create')}}">
+                <span class="material-icons">add</span> Добавить
+            </a>
+        @break
         @endswitch
 
         {{-- Multiple Delete buttons for all index page routes --}}
@@ -51,6 +59,7 @@
             @case('dashboard.products.index')
             @case('dashboard.categories.index')
             @case('dashboard.slides.index')
+            @case('dashboard.sizes.index')
                 <button onclick="toggleCheckboxes()">
                     <span class="material-icons">done_all</span> Отметить все
                 </button>

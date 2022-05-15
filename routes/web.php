@@ -7,6 +7,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SlideController;
 use Illuminate\Support\Facades\Route;
 
@@ -82,6 +83,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/slides/store', [SlideController::class, 'store'])->name('slides.store');
     Route::post('/slides/update', [SlideController::class, 'update'])->name('slides.update');
     Route::post('/slides/destroy', [SlideController::class, 'destroy'])->name('slides.destroy');
+
+    // sizes
+    Route::get('/dashboard/sizes', [SizeController::class, 'dashIndex'])->name('dashboard.sizes.index');
+    Route::get('/dashboard/sizes/create', [SizeController::class, 'create'])->name('sizes.create');
+    Route::get('/dashboard/sizes/{id}', [SizeController::class, 'edit'])->name('sizes.edit');
+
+    Route::post('/sizes/store', [SizeController::class, 'store'])->name('sizes.store');
+    Route::post('/sizes/update', [SizeController::class, 'update'])->name('sizes.update');
+    Route::post('/sizes/destroy', [SizeController::class, 'destroy'])->name('sizes.destroy');
 });
 
 require __DIR__.'/auth.php';
