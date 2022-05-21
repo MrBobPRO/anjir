@@ -2,6 +2,7 @@
     <div class="modal-background" data-action="hide-modal" data-target-id="buy-on-click-modal"></div>
     <div class="gradient-bg modal-dialog">
         <div class="modal-content">
+            <img src="{{ asset('img/main/close.png') }}" class="modal-close-btn" data-action="hide-modal" data-target-id="buy-on-click-modal">
             <img src="{{ asset('img/main/sliced-anjir.png') }}" class="modal-content__background">
             <h2 class="modal-title">Купить в один клик</h2>
             <img class="modal-image" id="buy-on-click-modal-image" src="{{ asset('img/main/feedback.png') }}">

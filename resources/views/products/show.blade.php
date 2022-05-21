@@ -28,7 +28,7 @@
 
     <section class="product-info">
         <div class="main-container product-info__inner">
-            <form action="#" class="product-card__form">
+            <form action="javascript:void(0)" class="product-card__form">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
         

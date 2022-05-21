@@ -20,7 +20,7 @@
                         @endphp
 
                         <div class="product-card">
-                            <form action="#" class="product-card__form">
+                            <form action="javascript:void(0)" class="product-card__form">
                                 @csrf
                         
                                 <a href="{{ route('products.show', $product->id) }}" class="product-card__appearance">

@@ -2,6 +2,7 @@
     <div class="modal-background" data-action="hide-modal" data-target-id="feedback-modal"></div>
     <div class="modal-dialog gradient-bg">
         <div class="modal-content">
+            <img src="{{ asset('img/main/close.png') }}" class="modal-close-btn" data-action="hide-modal" data-target-id="feedback-modal">
             <img src="{{ asset('img/main/sliced-anjir.png') }}" class="modal-content__background">
             <h2 class="modal-title">Заказать звонок</h2>
             <img class="modal-image" src="{{ asset('img/main/feedback.png') }}" alt="feedback">
