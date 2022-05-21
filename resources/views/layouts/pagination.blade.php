@@ -4,13 +4,13 @@
     @if ($paginator->onFirstPage())
         <li class="pagination__prev">
             <a class="page-link disabled">
-                <span class="material-icons pagination__prev-arrow">play_arrow</span>
+                <span class="material-icons-outlined pagination__prev-arrow">arrow_back_ios</span>
             </a>
         </li>
     @else
         <li class="pagination__prev">
             <a class="page-link" href="{{ $paginator->previousPageUrl() }}">
-                <span class="material-icons pagination__prev-arrow">play_arrow</span>
+                <span class="material-icons-outlined pagination__prev-arrow">arrow_back_ios</span>
             </a>
         </li>
     @endif
@@ -53,13 +53,13 @@
     @if ($paginator->hasMorePages())
         <li class="pagination__next">
             <a class="page-link" href="{{ $paginator->nextPageUrl() }}">
-                <span class="material-icons pagination__next-arrow">play_arrow</span>
+                <span class="material-icons-outlined pagination__next-arrow">arrow_forward_ios</span>
             </a>
         </li>
     @else
     <li class="pagination__next">
             <a class="page-link disabled">
-                <span class="material-icons pagination__next-arrow">play_arrow</span>
+                <span class="material-icons-outlined pagination__next-arrow">arrow_forward_ios</span>
             </a>
         </li>
     @endif

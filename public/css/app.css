@@ -523,6 +523,7 @@ button {
 /* ------------ Products list  ------------ */
 .products-list-section__inner {
     padding-top: 40px;
+    flex-direction: column;
 }
 .products-list {
     display: flex;
@@ -1074,6 +1075,42 @@ img.lightboxed {
     font-size: 13px;
 }
 /* ------------ /end Search  ------------ */
+
+
+/* ------------ Pagination  ------------ */
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    list-style: none;
+    margin: 30px 0 0;
+    gap: 8px;
+    justify-content: center;
+}
+.page-link {
+    border: 1px solid #ccc;
+    color: black;
+    min-width: 32px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+.page-link.active, .page-link:hover {
+    background: -webkit-linear-gradient(0deg, #C387D1, black);
+    color: white;
+}
+.page-link.disabled {
+    color: #b5b5b5;
+    pointer-events: none;
+    border-color: #ccc;
+}
+.page-link span {
+    font-size: 14px;
+}
+/* ------------ /end Pagination  ------------ */
 
 
 

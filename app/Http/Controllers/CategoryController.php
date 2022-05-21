@@ -45,8 +45,8 @@ class CategoryController extends Controller
     public function show($url)
     {
         $category = Category::where('url', $url)->first();
-        $products = $category->products()->orderBy('title')->paginate(16);
-        $novelty = $category->products()->latest()->take(12)->get();
+        $products = $category->products()->orderBy('title')->paginate(12);
+        $novelty = $category->products()->latest()->take(10)->get();
 
         return view('categories.show', compact('category', 'products', 'novelty'));
     }

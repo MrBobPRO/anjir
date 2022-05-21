@@ -27,6 +27,7 @@
                     <x-products-card :product="$product" />
                 @endforeach
             </div>
+            {{ $products->links('layouts.pagination') }}
         </div>
     </section>
 </main>

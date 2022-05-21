@@ -4,9 +4,15 @@
         padding-right: 12px;
     }
     main {
-        padding: 20px 0;
+        padding: 20px 0 32px;
     }
-
+    .main-title {
+        font-size: 16px;
+    }
+    .main-title-container span {
+        height: 8px;
+        margin-top: 2px;
+    }
 
     /* Header start */
     .menu-toggler {
@@ -125,4 +131,58 @@
         right: -10px;
     }
     /* Novelty end */
+
+
+    /* About us page start */
+    .about-us-text__bg {
+        padding: 32px 20px;
+    }
+    .about-us-text h1 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .about-us-text p {
+        padding: 0;
+    }
+    .about-us-text img {
+        opacity: 0.15;
+        bottom: 0;
+    }
+    /* About us page end */
+
+
+    /* Product card start */
+    .products-list {
+        flex-direction: column;
+    }
+    .product-card {
+        width: 100%;
+    }
+    .product-card__badget h2 {
+        font-size: 15px;
+    }
+    .product-card__sizes label {
+        font-size: 16px;
+    }
+    .product-card__sizes span {
+        font-size: 16px;
+    }
+    .product-card__actions button {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .product-card__actions button img {
+        width: 28px;
+        margin-top: 12px;
+    }
+    /* Product card end */
+
+
+    /* Pagination start */
+    .page-link {
+        font-size: 16px;
+        min-width: 38px;
+        min-height: 38px;
+    }
+    /* Pagination end */
 }
