@@ -5,7 +5,7 @@
             <a class="logo footer__logo" href="{{ route('home') }}">
                 <img src="{{ asset('img/main/logo.png') }}" alt="Anjir logo">
             </a>
-            <p>Магазин одежды со вкусом стиля</p>
+            <p>{{ App\Models\Option::where('key', 'footer-text')->first()->value }}</p>
         </div>
 
         <div class="footer__block">

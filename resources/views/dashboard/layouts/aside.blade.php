@@ -54,6 +54,12 @@
             </li>
 
             <li>
+                <a class="@if(strpos($route, 'options') !== false) active @endif" href="{{route('dashboard.options.index')}}">
+                    <span class="material-icons">notes</span> Тексты
+                </a>
+            </li>
+
+            <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit"><span class="material-icons">logout</span> Выйти</button>

@@ -7,6 +7,7 @@
         @elseif(strpos($route, 'categories') !== false) Категории
         @elseif(strpos($route, 'slides') !== false) Слайды
         @elseif(strpos($route, 'sizes') !== false) Размеры
+        @elseif(strpos($route, 'options') !== false) Тексты
         @endif
 
         {{-- First levels items count --}}
@@ -21,6 +22,7 @@
         @elseif($route == 'categories.edit') / {{ $category->name }}
         @elseif($route == 'slides.edit') / {{ $slide->id }}
         @elseif($route == 'sizes.edit') / {{ $size->title }}
+        @elseif($route == 'options.edit') / {{ $option->title }}
         @endif
     </h1>
 

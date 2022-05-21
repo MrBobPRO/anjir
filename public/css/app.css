@@ -557,6 +557,9 @@ button {
     top: -12px;
     left: 12px;
 }
+.product-card__image {
+    border-radius: 12px 12px 0 0;
+}
 .product-card__badget {
     width: 80%;
     display: flex;
@@ -661,9 +664,11 @@ button {
     margin-bottom: 0;
 }
 .about-us-text__bg {
-    padding: 60px 100px 0;
+    padding: 60px 100px;
     border-radius: 12px;
     position: relative;
+    min-height: 400px;
+    width: 100%;
 }
 .about-us-text h1 {
     color: white;
@@ -671,13 +676,13 @@ button {
     font-size: 28px;
     margin-bottom: 24px;
 }
-.about-us-text p {
+.about-us-text__bg div {
     color: white;
     margin: 0;
     line-height: 1.8;
     z-index: 1;
     position: relative;
-    padding-bottom: 200px;
+    font-size: 14px;
 }
 .about-us-text img {
     position: absolute;
@@ -817,6 +822,7 @@ img.lightboxed {
     opacity: 0.9;
     position: relative;
     overflow-x: hidden;
+    max-height: 90%;
 }
 .main-modal.show .modal-dialog {
     transform: none;

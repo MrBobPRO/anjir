@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OptionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SizeController;
@@ -92,6 +93,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/sizes/store', [SizeController::class, 'store'])->name('sizes.store');
     Route::post('/sizes/update', [SizeController::class, 'update'])->name('sizes.update');
     Route::post('/sizes/destroy', [SizeController::class, 'destroy'])->name('sizes.destroy');
+
+    // options
+    Route::get('/dashboard/options', [OptionController::class, 'dashIndex'])->name('dashboard.options.index');
+    Route::get('/dashboard/options/{id}', [OptionController::class, 'edit'])->name('options.edit');
+
+    Route::post('/options/update', [OptionController::class, 'update'])->name('options.update');
 });
 
 require __DIR__.'/auth.php';

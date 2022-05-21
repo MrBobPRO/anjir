@@ -140,6 +140,7 @@
     /* About us page start */
     .about-us-text__bg {
         padding: 32px 20px;
+        min-height: auto;
     }
     .about-us-text h1 {
         font-size: 16px;
@@ -245,7 +246,6 @@
         padding: 32px 24px;
         min-width: auto;
         min-height: auto;
-        max-height: 90%;
     }
     .modal-title {
         font-size: 22px;
