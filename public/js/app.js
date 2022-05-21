@@ -308,3 +308,11 @@ function submitSearch() {
 }
 
 const debounceSearch = debounce(() => submitSearch());
+
+
+// Mobile navbar
+document.querySelectorAll('[data-action="toggle-mobile-menu"]').forEach(item => {
+    item.addEventListener('click', (evt) => {
+        document.querySelector('.mobile-nav').classList.toggle('mobile-nav--hidden')
+    })
+})

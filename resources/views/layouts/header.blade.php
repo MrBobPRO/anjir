@@ -22,7 +22,7 @@
                 <span class="header__basket-count" id="basket-products-count">{{ $productsInBasket }}</span>
             </a>
 
-            <button class="header__actions-item menu-toggler gradient-bg" data-action="show-modal" data-target-id="feedback-modal">
+            <button class="header__actions-item menu-toggler menu-toggler gradient-bg" data-action="toggle-mobile-menu">
                 <span class="material-icons-outlined">menu</span>
             </button>
         </div>
@@ -39,4 +39,24 @@
             <li><a class="header__nav-discounts" href="{{ route('discounts.show', 'zhenskoe') }}">Скидки <span>%</span></a></li>
         </ul>
     </nav> {{-- Header Nav end --}}
+
+    {{-- Mobile Nav start --}}
+    <nav class="mobile-nav mobile-nav--hidden">
+        <div class="gradient-bg mobile-nav__inner">
+            <span class="material-icons-outlined mobile-menu-dissmiss" data-action="toggle-mobile-menu">close</span>
+
+            <ul class="mobile-nav__list">
+                <li><a class="logo mobile-nav__logo" href="{{ route('home') }}">
+                        <img src="{{ asset('img/main/logo-white.png') }}" alt="Anjir white logo">
+                </a></li>
+
+                <li><a href="{{ route('home') }}">Главная</a></li>
+                <li><a href="{{ route('about-us') }}">О нас</a></li>
+                @foreach ($categories as $category)
+                    <li><a href="{{ route('categories.show', $category->url) }}">{{ $category->name }}</a></li>
+                @endforeach
+                <li><a class="header__nav-discounts" href="{{ route('discounts.show', 'zhenskoe') }}">Скидки <span>%</span></a></li>
+            </ul>
+        </div>
+    </nav> {{-- Mobile Nav end --}}
 </header>
