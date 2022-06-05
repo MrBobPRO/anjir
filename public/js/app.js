@@ -165,6 +165,39 @@ document.querySelectorAll('[data-action="add-into-basket"]').forEach(item => {
 });
 
 
+//remove from basket
+document.querySelectorAll('[data-action="remove-from-basket"]').forEach(item => {
+    item.addEventListener('click', event => {
+        let card = item.closest('.product-card');
+        let productId = card.querySelector('input[name="product_id"]').value;;
+
+        $.ajax({
+            type: 'POST',
+            url: '/remove-from-basket',
+            data: {product_id: productId},
+            cache: false,
+            timeout: 600000,
+
+            success: function (response) {
+                if (response.action == 'removed') {
+                    // remove card from DOM
+                    card.parentNode.removeChild(card);
+                } 
+
+                // reload page if there are no products on basket
+                if (response.productsInBasket == 0) {
+                    window.location.reload();
+                }
+                document.getElementById('basket-products-count').innerHTML = response.productsInBasket;
+            },
+            error: function () {
+                console.log('Ajax remove from basket failed !');
+            }
+        });
+    });
+});
+
+
 //counter increment & decrement buttons
 document.querySelectorAll('.increment-amount').forEach(item => {
     item.addEventListener('click', event => {
@@ -314,5 +347,5 @@ const debounceSearch = debounce(() => submitSearch());
 document.querySelectorAll('[data-action="toggle-mobile-menu"]').forEach(item => {
     item.addEventListener('click', (evt) => {
         document.querySelector('.mobile-nav').classList.toggle('mobile-nav--hidden')
-    })
-})
+    });
+});

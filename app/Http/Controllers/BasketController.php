@@ -66,7 +66,7 @@ class BasketController extends Controller
             }
         }
 
-        //else add into basket
+        // else add into basket
         session()->push('basket', [
             'product_id' => $request->product_id,
             'size' => $request->size,
@@ -80,47 +80,33 @@ class BasketController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Remove the specified resource from basket on baskets page.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function remove(Request $request)
     {
-        //
-    }
+        $products = session('basket');
+        $removed = false;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        //remove from basket if product already exists
+        if($products) {
+            foreach($products as $product) {
+                if($product['product_id'] == $request->product_id) {
+                    if (($key = array_search($product, $products)) !== false) {
+                        unset($products[$key]);
+                        $removed = true;
+                    }
+                }
+            }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            session()->put('basket', $products);
+    
+            return [
+                'action' => $removed ? 'removed' : 'void',
+                'productsInBasket' => session('basket') ? count(session('basket')) : 0
+            ];
+        }
     }
 }

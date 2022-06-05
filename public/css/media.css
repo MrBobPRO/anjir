@@ -180,6 +180,9 @@
         width: 28px;
         margin-top: 12px;
     }
+    .basket-page .remove-from-basket-button span {
+        font-size: 28px;
+    }
     /* Product card end */
     
 

@@ -40,6 +40,7 @@ Route::post('/checkout', [OrderController::class, 'checkout'])->name('orders.che
 
 Route::get('/korzina', [BasketController::class, 'index'])->name('basket.index');
 Route::post('/add-into-basket', [BasketController::class, 'store'])->name('basket.store');
+Route::post('/remove-from-basket', [BasketController::class, 'remove'])->name('basket.remove');
 
 Route::group(['middleware' => 'auth'], function () {
     // orders

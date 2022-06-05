@@ -22,11 +22,15 @@
                         <div class="product-card">
                             <form action="javascript:void(0)" class="product-card__form">
                                 @csrf
+                                <button class="remove-from-basket-button" data-action="remove-from-basket">
+                                    <span class="material-icons-outlined">close</span>
+                                </button>
                         
                                 <a href="{{ route('products.show', $product->id) }}" class="product-card__appearance">
                                     @if ($product->discount)
                                         <span class="product-card__discount">-{{ $product->discount }}%</span>
                                     @endif
+
                                     <img class="product-card__image" src="{{ asset('img/products/' . $product->image) }}" alt="{{ $product->title }}">
                                     <div class="gradient-bg product-card__badget">
                                         <h2>{{ $product->title }}</h2>
